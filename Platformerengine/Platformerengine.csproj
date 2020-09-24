@@ -63,8 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="res\code\graphics\Renderer.cs" />
+    <Compile Include="res\code\graphics\Scene.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
+    <Compile Include="res\code\PhysicsComponent.cs" />
     <Compile Include="res\code\physics\Collider.cs" />
+    <Compile Include="res\code\IComponent.cs" />
     <Compile Include="res\code\physics\IVector2d.cs" />
     <Compile Include="res\code\logic\Point.cs" />
     <Compile Include="res\code\physics\Physics.cs" />
@@ -102,7 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="res\assets\" />
-    <Folder Include="res\code\graphics\" />
     <Folder Include="res\settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
