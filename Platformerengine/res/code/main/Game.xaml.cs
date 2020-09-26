@@ -19,16 +19,13 @@ namespace Platformerengine.res.code.main
 {
     public partial class Game : Page
     {
-        GameObject Player;
-
-        public Game()
+        private Game()
         {
             InitializeComponent();
         }
 
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
-            Player.AddComponent(new Physics());
         }
     }
 }

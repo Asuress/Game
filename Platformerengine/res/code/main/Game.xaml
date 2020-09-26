@@ -10,10 +10,7 @@
 
     <Viewbox x:Name="viewBox">
         <Viewport3D x:Name="viewPort">
-            
+
         </Viewport3D>
-        <!--<Canvas x:Name="canvas" Loaded="canvas_Loaded" >
-            
-        </Canvas>-->
     </Viewbox>
 </Page>
