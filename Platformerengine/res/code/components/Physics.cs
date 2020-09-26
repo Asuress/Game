@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platformerengine.res.code.logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,12 @@ using System.Windows;
 namespace Platformerengine.res.code.physics {
     class Physics : IComponent
     {
-        private Vector g = new Vector(0, -9.81);
-        private Vector Acceleration = new Vector(0, 0);
-        private LinkedList<Vector> Forces = new LinkedList<Vector>();
+        private Vector2 g = new Vector2(0, -9.81);
+        private Vector2 Acceleration = new Vector2(0, 0);
+        private LinkedList<Vector2> Forces = new LinkedList<Vector2>();
 
-        public Vector Force { get; private set; }
-        public Vector Speed { get; set; }
+        public Vector2 Force { get; private set; }
+        public Vector2 Speed { get; set; }
         public double Mass { get; set; }
         public double Friction { get; set; }
 
@@ -29,7 +30,7 @@ namespace Platformerengine.res.code.physics {
             init();
         }
 
-        public void addForce(Vector force, ForceMode mode = ForceMode.Force)
+        public void addForce(Vector2 force, ForceMode mode = ForceMode.Force)
         {
             switch (mode)
             {
@@ -47,15 +48,15 @@ namespace Platformerengine.res.code.physics {
 
         private void init()
         {
-            Forces.AddLast(new Vector(Mass * g.X, Mass * g.Y));
-            Forces.AddLast(new Vector(-Acceleration.X * g.Y * Friction, -Acceleration.Y * g.Y * Friction));
+            Forces.AddLast(new Vector2(Mass * g.X, Mass * g.Y));
+            Forces.AddLast(new Vector2(-Acceleration.X * g.Y * Friction, -Acceleration.Y * g.Y * Friction));
             Force = forcesSumm();
             accelerationCalculate();
         }
 
-        private Vector forcesSumm()
+        private Vector2 forcesSumm()
         {
-            Vector summ = new Vector();
+            Vector2 summ = new Vector2();
 
             foreach (var v in Forces)
             {
