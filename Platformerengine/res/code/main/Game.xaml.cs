@@ -20,6 +20,7 @@ namespace Platformerengine.res.code.main {
     public partial class Game : Page {
         private static Game Instance;
         private bool IsGameRun;
+        private Vector Speed;
 
         private Game() {
             InitializeComponent();
@@ -35,10 +36,10 @@ namespace Platformerengine.res.code.main {
         public void Start()
         {
             IsGameRun = true;
-            GameLoop();
+            CompositionTarget.Rendering += GameLoop;
         }
 
-        private void GameLoop()
+        protected void GameLoop(object sender, EventArgs e)
         {
             /*
             new thread
@@ -47,13 +48,10 @@ namespace Platformerengine.res.code.main {
             //another physics
             }
             */
-            while (IsGameRun)
-            {
                 Input();
                 ForceUpdate();
                 Update();
                 Render();
-            }
         }
         private void ForceUpdate()
         {
@@ -72,6 +70,7 @@ namespace Platformerengine.res.code.main {
             Rectangle rect = new Rectangle();
             rect.Width = 100;
             rect.Height = 50;
+            rect.Fill = Brushes.Red;
             Canvas.SetLeft(rect, 20);
             Canvas.SetTop(rect, 40);
             Canvas.Children.Add(rect);
