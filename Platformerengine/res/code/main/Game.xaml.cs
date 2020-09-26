@@ -15,17 +15,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Platformerengine.res.code.main
-{
-    public partial class Game : Page
-    {
-        private Game()
-        {
+namespace Platformerengine.res.code.main {
+    public partial class Game : Page {
+        private static Game Instance;
+
+        private Game() {
             InitializeComponent();
         }
 
-        private void canvas_Loaded(object sender, RoutedEventArgs e)
-        {
+        public static Game GetInctance() {
+            if (Instance == null) {
+                Instance = new Game();
+            }
+            return Instance;
+        }
+
+        private void Canvas_Loaded(object sender, RoutedEventArgs e) {
         }
     }
 }
