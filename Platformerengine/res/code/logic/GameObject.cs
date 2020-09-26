@@ -4,20 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 
 namespace Platformerengine.res.code.logic {
-    class GameObject {
+    class GameObject
+    {
         public GameObject(int _x, int _y) {
-            Vector = new Vector2d(0, 0);
-            Components = new LinkedList<Physics>();
-            Coord = new Point(_x, _y);
+            Components = new LinkedList<IComponent>();
+            Position = new Point(_x, _y);
         }
-        private Point Coord { get; set; }
-        private IVector2d Vector { get; set; }
-        private LinkedList<Physics> Components;
+        private Point Position { get; set; }
+        private LinkedList<IComponent> Components;
 
-        public void AddComponent(Physics ph) {
+        public string Tag { get; set; }
+
+        public T GetComponent<T>()
+        {
+            foreach (T component in Components)
+            {
+                if (component.GetType() is T)
+                    return component;
+            }
+            return default;
+        }
+        
+        public void AddComponent(in IComponent ph) {
             Components.AddLast(ph);
         }
     }
