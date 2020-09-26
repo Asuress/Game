@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="res\code\main\Game.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="res\code\main\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +67,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="res\code\graphics\Renderer.cs" />
-    <Compile Include="res\code\graphics\Scene.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
-    <Compile Include="res\code\PhysicsComponent.cs" />
+    <Compile Include="res\code\main\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
     <Compile Include="res\code\physics\Collider.cs" />
     <Compile Include="res\code\IComponent.cs" />
     <Compile Include="res\code\physics\IVector2d.cs" />
@@ -106,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="res\assets\" />
+    <Folder Include="res\code\graphics\" />
     <Folder Include="res\settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
