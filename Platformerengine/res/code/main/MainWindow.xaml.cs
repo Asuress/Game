@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platformerengine.res.code.main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,12 @@ namespace Platformerengine {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+        }
+        private void ButtonClick(object sender, RoutedEventArgs e)
+        {
+            Game game = Game.GetInstance();
+            Content = game;
+            game.Start();
         }
     }
 }

@@ -75,7 +75,7 @@
     <Compile Include="res\code\IComponent.cs" />
     <Compile Include="res\code\physics\IVector2d.cs" />
     <Compile Include="res\code\logic\Point.cs" />
-    <Compile Include="res\code\physics\Physics.cs" />
+    <Compile Include="res\code\components\Physics.cs" />
     <Compile Include="res\code\physics\Vector2d.cs" />
     <Compile Include="res\code\main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
