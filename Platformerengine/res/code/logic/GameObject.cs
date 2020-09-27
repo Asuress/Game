@@ -20,10 +20,10 @@ namespace Platformerengine.res.code.logic {
 
         public T GetComponent<T>()
         {
-            foreach (T component in Components)
+            foreach (IComponent component in Components)
             {
                 if (component.GetType() is T)
-                    return component;
+                    return (T)component;
             }
             return default;
         }
