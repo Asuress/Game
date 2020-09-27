@@ -8,9 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Game">
 
-    <Viewbox x:Name="viewBox">
-        <Viewport3D x:Name="viewPort">
+    <Canvas x:Name="Canvas" Width="400" Height="400">
 
-        </Viewport3D>
-    </Viewbox>
+    </Canvas>
 </Page>
