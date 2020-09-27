@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platformerengine.res.code {
+namespace Platformerengine.res.code.logic {
  class Point
     {
         private double X { get; set; }
