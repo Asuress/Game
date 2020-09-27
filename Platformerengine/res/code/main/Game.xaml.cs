@@ -25,7 +25,7 @@ namespace Platformerengine.res.code.main {
         private Vector Speed;
         private long Framerate;
         private int FrameCoutner;
-        private int FpsLimit = 120;
+        private int FpsLimit = 30;
         private Stopwatch timeOfOneFrame;
         private Stopwatch TotalTime;
         private int move = 10; //DELETE THIS LATER
@@ -62,7 +62,13 @@ namespace Platformerengine.res.code.main {
             Render();
 
             // FOR TEST FPS, DELETE IS LATER
-
+            Rectangle rect = new Rectangle();
+            rect.Width = 100;
+            rect.Height = 50;
+            rect.Fill = Brushes.Red;
+            Canvas.SetLeft(rect, 20);
+            Canvas.SetTop(rect, move++);
+            Canvas.Children.Add(rect);
             Label stopwatchLabel = new Label();
             Canvas.SetLeft(stopwatchLabel, move++);
             Canvas.SetTop(stopwatchLabel, 100);
@@ -80,7 +86,7 @@ namespace Platformerengine.res.code.main {
             // обновляется раз в секунду (1000 миллисекунд)
             if (totalTime >= 1000) {
                 Framerate = (long)(FrameCoutner * 1000 / totalTime);
-                stopwatchLabel.Content = time; //DELETE IS TOO, IN HERE CHANGE FPS LABEL IN SCENE
+                stopwatchLabel.Content = Framerate; //DELETE IS TOO, IN HERE CHANGE FPS LABEL IN SCENE
                 FrameCoutner = 0;
                 TotalTime.Restart();
             }
