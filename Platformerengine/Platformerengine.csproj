@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="res\code\components\Physics.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
     <Compile Include="res\code\logic\Vector2.cs" />
     <Compile Include="res\code\main\Game.xaml.cs">
