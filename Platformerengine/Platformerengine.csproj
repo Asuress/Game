@@ -68,7 +68,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="res\code\components\Physics.cs" />
-    <Compile Include="res\code\Physics.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
     <Compile Include="res\code\main\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
