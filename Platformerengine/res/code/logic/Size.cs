@@ -45,6 +45,18 @@ namespace Platformerengine.res.code.logic
         }
         public bool Equals(Size size1, Size size2) => size1.Width == size2.Width && size1.Height == size2.Height;
         public bool Equals(Size size) => size.Width == Width && size.Height == Height;
+        public override bool Equals(object o)
+        {
+            if(o is Size)
+            {
+                return Equals(this, o);
+            }
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public static bool operator ==(Size size1, Size size2) => size1.Equals(size2);
         public static bool operator !=(Size size1, Size size2) => !size1.Equals(size2);
     }
