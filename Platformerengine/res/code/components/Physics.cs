@@ -30,7 +30,7 @@ namespace Platformerengine.res.code.physics {
             init();
         }
 
-        public void addForce(Vector2 force, ForceMode mode = ForceMode.Force)
+        public void addForce(Vector2 force, ForceMode mode = ForceMode.Force, double time = 1)
         {
             switch (mode)
             {
