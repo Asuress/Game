@@ -64,6 +64,10 @@ namespace Platformerengine.res.code.logic
                 return true;
             return false;
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public static Vector2 operator +(Vector2 v) => v;
         public static Vector2 operator -(Vector2 v) => new Vector2(-v.X, -v.Y);
         public static Vector2 operator +(Vector2 v1, Vector2 v2)
