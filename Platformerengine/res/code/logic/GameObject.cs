@@ -20,16 +20,16 @@ namespace Platformerengine.res.code.logic {
 
         public T GetComponent<T>()
         {
-            foreach (IComponent component in Components)
+            foreach (var component in Components)
             {
-                if (component.GetType() is T)
+                if (component is T)
                     return (T)component;
             }
             return default;
         }
         
-        public void AddComponent(in IComponent ph) {
-            Components.AddLast(ph);
+        public void AddComponent(in IComponent newComponent) {
+            Components.AddLast(newComponent);
         }
     }
 }
