@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Platformerengine.res.code.logic {
  class Point
     {
-        private double X { get; set; }
-        private double Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
         public Point(double _x = 0, double _y = 0)
         {
             X = _x;

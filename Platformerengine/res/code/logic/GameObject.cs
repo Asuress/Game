@@ -5,16 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic {
-    class GameObject
-    {
-        public GameObject(int _x, int _y) {
+    class GameObject {
+        public string id {get;}
+        public GameObject(string _id, int _x, int _y, Shape shape) {
             Components = new LinkedList<IComponent>();
             Position = new Point(_x, _y);
+            Sprite = shape;
+            id = _id;
         }
-        private Point Position { get; set; }
+        public Point Position { get; set; }
         private LinkedList<IComponent> Components;
+        public Shape Sprite { get; set; }
 
         public string Tag { get; set; }
 
