@@ -9,7 +9,7 @@ using System.Windows.Navigation;
 
 namespace Platformerengine.res.code.logic
 {
-    class Vector2
+    public class Vector2
     {
         public Vector2() 
             : this(0,0)
