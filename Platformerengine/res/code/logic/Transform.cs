@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic
@@ -14,9 +15,10 @@ namespace Platformerengine.res.code.logic
             currentShape = shape;
         }
 
-        public void Turn(double degree)
+        public void Rotate(double degree)
         {
-            currentShape.RenderTransform =  new RotateTransform(degree);   
+            
+            currentShape.RenderTransform = new RotateTransform(degree);   
         }
         
 
