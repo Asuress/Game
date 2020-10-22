@@ -69,6 +69,8 @@
     </Compile>
     <Compile Include="res\code\Graphics\FabricScene.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
+    <Compile Include="res\code\logic\Size.cs" />
+    <Compile Include="res\code\logic\Transform.cs" />
     <Compile Include="res\code\logic\Vector2.cs" />
     <Compile Include="res\code\main\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>

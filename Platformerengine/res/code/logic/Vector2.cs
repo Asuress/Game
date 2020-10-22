@@ -9,7 +9,7 @@ using System.Windows.Navigation;
 
 namespace Platformerengine.res.code.logic
 {
-    class Vector2
+    public class Vector2
     {
         public Vector2() 
             : this(0,0)
@@ -63,6 +63,10 @@ namespace Platformerengine.res.code.logic
             if (v1.X == v2.X && v1.Y == v2.Y)
                 return true;
             return false;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         public static Vector2 operator +(Vector2 v) => v;
         public static Vector2 operator -(Vector2 v) => new Vector2(-v.X, -v.Y);
