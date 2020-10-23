@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Platformerengine.res.code.logic
 {
-    class Size
+    public class Size
     {
         Size(double width, double height)
         {

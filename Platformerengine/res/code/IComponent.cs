@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Platformerengine.res.code
 {
-    interface IComponent
+    public interface IComponent
     {
     }
 }

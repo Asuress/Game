@@ -6,22 +6,68 @@ namespace Platformerengine.res.code.logic
 {
     public class Transform : IComponent
     {
-        private Point currentPoint { get; set; }
-        private Shape currentShape { get; set; }
+        public Point Point {
+            get
+            {
+                return _Point;
+            }
 
-        public Transform(Point anyPoint, Shape shape)
+            set
+            {
+                _Point = value;
+                PointChange(this,_Point);
+
+            }}
+        private Point _Point;
+        private GameObject Parent {get;}
+        
+        public Size  Size {
+            get
+            {
+                return _Size;
+            }
+            set
+            {
+                _Size = value;
+                SizeChange(this, _Size);
+            }
+            
+        }
+        private Size _Size;
+
+        public RotateTransform RotateTransform { get; set; }
+
+        public Transform(Point anyPoint, Shape anyShape,Size anySize, GameObject parent)
+
         {
-            currentPoint = anyPoint;
-            currentShape = shape;
+            Parent = parent;
+            Point = anyPoint;
+            Size = anySize;
         }
 
         public void Rotate(double degree)
         {
-            
-            currentShape.RenderTransform = new RotateTransform(degree);   
-        }
-        
+            RotateTransform = new RotateTransform(degree);
+            Parent.Shape.RenderTransform = RotateTransform;
+            RotateChange(this,RotateTransform);
 
+        }
+        public void ChangePoint(Point anyPoint)
+        {
+            Point = anyPoint;
+        }
+        public delegate void RotateHandler(Transform This, RotateTransform any);
+
+        public delegate void SizeChangeHadler(Transform This, Size s);
+
+        public delegate void PointChangeHandler(Transform This, Point p);
+
+       
+        
+        public event RotateHandler RotateChange = delegate { };
+        public event SizeChangeHadler SizeChange = delegate{  };
+        public event PointChangeHandler PointChange = delegate{  };
+        
         public override string ToString()
         {
             return base.ToString();
