@@ -1,35 +1,34 @@
-﻿using Platformerengine.res.code.physics;
-using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic {
-    class GameObject
-    {
-        public GameObject(int _x, int _y) {
+    public class GameObject {
+        public string id {get;}
+        public GameObject(string _id, int _x, int _y, Shape shape) {
             Components = new LinkedList<IComponent>();
             Position = new Point(_x, _y);
+            Shape = shape;
+            id = _id;
         }
-        private Point Position { get; set; }
+        public Point Position { get; set; }
         private LinkedList<IComponent> Components;
+        public Shape Shape{ get; set; }
 
         public string Tag { get; set; }
 
         public T GetComponent<T>()
         {
-            foreach (var component in Components)
+            foreach (IComponent component in Components)
             {
-                if (component is T)
+                if (component.GetType() is T)
                     return (T)component;
             }
             return default;
         }
         
-        public void AddComponent(in IComponent newComponent) {
-            Components.AddLast(newComponent);
+        public void AddComponent(in IComponent ph) {
+            Components.AddLast(ph);
         }
     }
 }
