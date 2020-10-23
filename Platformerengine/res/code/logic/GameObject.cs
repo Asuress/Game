@@ -18,7 +18,7 @@ namespace Platformerengine.res.code.logic {
         }
         public Point Position { get; set; }
         private LinkedList<IComponent> Components;
-        public Shape Sprite { get; set; }
+        public Shape Shape{ get; set; }
 
         public string Tag { get; set; }
 
