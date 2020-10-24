@@ -68,16 +68,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="res\code\logic\GameObject.cs" />
+    <Compile Include="res\code\logic\Size.cs" />
+    <Compile Include="res\code\logic\Transform.cs" />
     <Compile Include="res\code\logic\Vector2.cs" />
     <Compile Include="res\code\main\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="res\code\physics\Collider.cs" />
     <Compile Include="res\code\IComponent.cs" />
-    <Compile Include="res\code\physics\IVector2d.cs" />
     <Compile Include="res\code\logic\Point.cs" />
     <Compile Include="res\code\components\Physics.cs" />
-    <Compile Include="res\code\physics\Vector2d.cs" />
     <Compile Include="res\code\main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
