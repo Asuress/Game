@@ -8,10 +8,11 @@ namespace Platformerengine.res.code.logic {
     public class GameObject {
         public string id {get;}
         
-        public GameObject(string _id, Shape shape) {
+        public GameObject(string _id,string _Tag, Shape shape) {
             Components = new LinkedList<IComponent>();
             Shape = shape;
             id = _id;
+            Tag = _Tag;
         }
         public Transform Transform { get; set; }
 
@@ -36,7 +37,7 @@ namespace Platformerengine.res.code.logic {
 
         }
 
-        protected void ChangePosithion(GameObject ThisgameObject, Point Posithion)
+        protected void ChangePosithion(Point Posithion)
         {
             Transform.Point = Posithion;
             Canvas.SetLeft(Shape,Transform.Point.X);
@@ -46,7 +47,7 @@ namespace Platformerengine.res.code.logic {
            
             
         }
-        protected void ChangeSize(GameObject ThisgameObject, Size Size)
+        protected void ChangeSize(Size Size)
         {
             Transform.Size = Size;
             Shape.Width = Transform.Size.Width;
