@@ -1,24 +1,32 @@
 ﻿using Platformerengine.res.code.logic;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Platformerengine.res.code.Graphics
 {
-    public class Scene
+    public class Scene : Canvas
     {
         Scene()
         {
-
+            Objects = new LinkedList<GameObject>();
         }
 
         public LinkedList<GameObject> Objects { get; }
 
         public void AddGameObject(GameObject go)
         {
-
+            Objects.AddLast(go);
+            //Canvas.Sets
+            Children.Add(go.Shape);
+        }
+        public bool Contains(GameObject go)
+        {
+            foreach (var gameObject in Objects)
+            {
+                if (gameObject == go)
+                    return true;
+            }
+            return false;
         }
     }
 }
