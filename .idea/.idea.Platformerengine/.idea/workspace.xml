@@ -22,18 +22,15 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/Transform" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Transform" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5688fe32-fd1f-4d7d-a901-c1238c947799" name="Default Changelist" comment="">
+    <list default="true" id="5688fe32-fd1f-4d7d-a901-c1238c947799" name="Default Changelist" comment="update Transform">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformerengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformerengine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/IComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/IComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/Size.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/Size.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +46,17 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/Asuress/Game" />
+      </set>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Виталик/RiderProjects/Game/Platformerengine/res/code/logic/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Виталик/RiderProjects/Game/Platformerengine/res/code/logic/Transform.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -107,7 +113,8 @@
       <workItem from="1602239196266" duration="5059000" />
       <workItem from="1602264191752" duration="961000" />
       <workItem from="1603391428374" duration="2238000" />
-      <workItem from="1603445988850" duration="3764000" />
+      <workItem from="1603445988850" duration="4561000" />
+      <workItem from="1603538944592" duration="2178000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #17 from Asuress/Size_class&#10;&#10;Created Size class">
       <created>1602242825472</created>
@@ -130,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602264310481</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update Transform">
+      <created>1603449781084</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603449781084</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +173,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Transform" />
+                        <option value="Transform" />
                       </list>
                     </value>
                   </entry>
@@ -178,7 +192,8 @@
     <MESSAGE value="Merge pull request #17 from Asuress/Size_class&#10;&#10;Created Size class" />
     <MESSAGE value="Transfrom 0.1" />
     <MESSAGE value="Rotate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rotate" />
+    <MESSAGE value="update Transform" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
     <state x="517" y="237" key="#Notifications" timestamp="1602239362203">
@@ -205,13 +220,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1602239612530" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602264480967">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603540758137">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602264480967" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602239326903">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603540758137" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603449794791">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602239326903" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1603449794791" />
+    <state x="542" y="126" key="git4idea.branch.GitSmartOperationDialog" timestamp="1603539384259">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="542" y="126" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1603539384259" />
   </component>
 </project>

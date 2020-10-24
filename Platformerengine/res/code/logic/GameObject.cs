@@ -1,17 +1,20 @@
 ﻿
 using System.Collections.Generic;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic {
     public class GameObject {
         public string id {get;}
-        public GameObject(string _id, int _x, int _y, Shape shape) {
+        
+        public GameObject(string _id, Shape shape) {
             Components = new LinkedList<IComponent>();
-            Position = new Point(_x, _y);
             Shape = shape;
             id = _id;
         }
-        public Point Position { get; set; }
+        public Transform Transform { get; set; }
+
         private LinkedList<IComponent> Components;
         public Shape Shape{ get; set; }
 
@@ -29,6 +32,25 @@ namespace Platformerengine.res.code.logic {
         
         public void AddComponent(in IComponent ph) {
             Components.AddLast(ph);
+            
+
+        }
+
+        protected void ChangePosithion(GameObject ThisgameObject, Point Posithion)
+        {
+            Transform.Point = Posithion;
+            Canvas.SetLeft(Shape,Transform.Point.X);
+            Canvas.SetRight(Shape,Transform.Point.Y);
+            
+            
+           
+            
+        }
+        protected void ChangeSize(GameObject ThisgameObject, Size Size)
+        {
+            Transform.Size = Size;
+            Shape.Width = Transform.Size.Width;
+            Shape.Height = Transform.Size.Height;
         }
     }
 }

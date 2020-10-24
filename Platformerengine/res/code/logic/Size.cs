@@ -13,7 +13,7 @@ namespace Platformerengine.res.code.logic
             Width = width;
             Height = height;
         }
-        double Width { 
+        public double Width { 
             get { return Width; }
             set
             {
@@ -23,7 +23,7 @@ namespace Platformerengine.res.code.logic
                     Width = value;
             }
         }
-        double Height
+        public double Height
         {
             get { return Width; }
             set
