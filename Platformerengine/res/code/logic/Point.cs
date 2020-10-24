@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Platformerengine.res.code.logic {
- class Point
+    public class Point
     {
         public double X { get; set; }
         public double Y { get; set; }

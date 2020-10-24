@@ -68,6 +68,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="res\code\Graphics\FabricScene.cs" />
+    <Compile Include="res\code\Graphics\Scene.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
     <Compile Include="res\code\logic\Size.cs" />
     <Compile Include="res\code\logic\Transform.cs" />
