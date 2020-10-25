@@ -6,42 +6,22 @@ using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic {
     public class GameObject {
-        public string id {get;}
-        
-        public GameObject(string _id,string _Tag, Shape shape) {
-            Components = new LinkedList<IComponent>();
+        public GameObject(string _id,string _Tag, Shape shape,Point Point, Size anySize) {
             Shape = shape;
-            id = _id;
+            Id = _id;
             Tag = _Tag;
+            Transform = new Transform(Point,anySize,this);
         }
         public Transform Transform { get; set; }
-
-        private LinkedList<IComponent> Components;
+        public string Id {get;}
         public Shape Shape{ get; set; }
-
         public string Tag { get; set; }
-
-        public T GetComponent<T>()
-        {
-            foreach (IComponent component in Components)
-            {
-                if (component.GetType() is T)
-                    return (T)component;
-            }
-            return default;
-        }
-        
-        public void AddComponent(in IComponent ph) {
-            Components.AddLast(ph);
-            
-
-        }
-
         protected void ChangePosithion(Point Posithion)
         {
+            
+            Canvas.SetLeft(Shape,Posithion.X);
+            Canvas.SetRight(Shape,Posithion.Y);
             Transform.Point = Posithion;
-            Canvas.SetLeft(Shape,Transform.Point.X);
-            Canvas.SetRight(Shape,Transform.Point.Y);
             
             
            
@@ -49,9 +29,10 @@ namespace Platformerengine.res.code.logic {
         }
         protected void ChangeSize(Size Size)
         {
+            
+            Shape.Width = Size.Width;
+            Shape.Height = Size.Height;
             Transform.Size = Size;
-            Shape.Width = Transform.Size.Width;
-            Shape.Height = Transform.Size.Height;
         }
     }
 }

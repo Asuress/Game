@@ -35,7 +35,7 @@ namespace Platformerengine.res.code.logic
         private Size _Size;
         public RotateTransform RotateTransform { get; set; }
 
-        public Transform(Point anyPoint, Shape anyShape,Size anySize, GameObject parent)
+        public Transform(Point anyPoint,Size anySize, GameObject parent)
 
         {
             Parent = parent;
