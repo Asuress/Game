@@ -50,10 +50,6 @@ namespace Platformerengine.res.code.logic
             RotateChange(Parent,RotateTransform);
 
         }
-        public void ChangePoint(Point anyPoint)
-        {
-            Point = anyPoint;
-        }
         public delegate void RotateHandler(GameObject parent, RotateTransform any);
 
         public delegate void SizeChangeHadler(GameObject parent, Size s);
