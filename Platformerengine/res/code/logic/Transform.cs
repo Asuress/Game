@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
@@ -33,6 +34,13 @@ namespace Platformerengine.res.code.logic {
             Parent = parent;
             Position = anyPoint;
             Size = anySize;
+        }
+
+        public Transform(GameObject parent) {
+            Parent = parent;
+            Position = new Point(1, 1);
+            Size = new Size(1, 1);
+
         }
 
         public void Rotate(double degree) {

@@ -1,4 +1,4 @@
-﻿using Platformerengine.res.code.graphic;
+using Platformerengine.res.code.graphic;
 using Platformerengine.res.code.Graphics;
 using Platformerengine.res.code.logic;
 using Platformerengine.res.code.physics;
@@ -55,7 +55,7 @@ namespace Platformerengine.res.code.main {
             scene.AddObjectOnScene(ell);
             FabricScene.AddScene("Primer", scene);
 
-            AddVisualChild(FabricScene.GetScene("Primer").Canvas);
+            AddVisualChild(FabricScene.GetScene("Primer").canvas);
         }
     }
 }
