@@ -8,33 +8,36 @@ namespace Platformerengine.res.code.logic
 {
     public class Size
     {
-        Size(double width, double height)
+        public Size(double width, double height)
         {
             Width = width;
             Height = height;
         }
-        double Width { 
-            get { return Width; }
+        public double Width { 
+            get { return width; }
             set
             {
                 if (value < 0)
-                    Width = 0;
+                    width = 0;
                 else
-                    Width = value;
-            }
-        }
-        double Height
-        {
-            get { return Width; }
-            set
-            {
-                if (value < 0)
-                    Height = 0;
-                else
-                    Height = value;
+                    width = value;
             }
         }
 
+        private double width;
+        public double Height
+        {
+            get { return height; }
+            set
+            {
+                if (value < 0)
+                    height = 0;
+                else
+                    height = value;
+            }
+        }
+
+        private double height;
         public Vector2 SizeToVector()
         {
             return new Vector2(Width, Height);

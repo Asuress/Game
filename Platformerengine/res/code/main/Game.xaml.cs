@@ -1,4 +1,6 @@
-﻿using Platformerengine.res.code.logic;
+﻿using Platformerengine.res.code.graphic;
+using Platformerengine.res.code.Graphics;
+using Platformerengine.res.code.logic;
 using Platformerengine.res.code.physics;
 using System;
 using System.Collections.Generic;
@@ -20,11 +22,12 @@ namespace Platformerengine.res.code.main {
     public partial class Game : Page {
         private static Game Instance;
         private bool IsGameRun;
-        private Vector Speed;
+        private FabricScene FabricScene;
 
         private Game() {
             InitializeComponent();
             IsGameRun = false;
+            FabricScene = FabricScene.GetInstance();
         }
 
         public static Game GetInstance() {
@@ -33,47 +36,26 @@ namespace Platformerengine.res.code.main {
             }
             return Instance;
         }
-        public void Start()
-        {
+        public void Start() {
             IsGameRun = true;
-            CompositionTarget.Rendering += GameLoop;
-        }
+            Shape shape = new Rectangle();
+            shape.Height = 100;
+            shape.Width = 200;
+            shape.Fill = Brushes.Black;
 
-        protected void GameLoop(object sender, EventArgs e)
-        {
-            /*
-            new thread
-            while(IsGameRune){
-                ForceUpdate();
-            //another physics
-            }
-            */
-                Input();
-                ForceUpdate();
-                Update();
-                Render();
-        }
-        private void ForceUpdate()
-        {
+            Shape ellipse = new Ellipse();
+            ellipse.Height = 200;
+            ellipse.Width = 50;
+            ellipse.Fill = Brushes.Red;
 
-        }
-        private void Input()
-        {
+            GameObject rect = new GameObject("Rect".ToString(), "Player".ToString(), shape, new logic.Point(10, 10), new logic.Size(10, 5));
+            GameObject ell = new GameObject("Ellipse".ToString(), "Enemy".ToString(), ellipse, new logic.Point(50, 20), new logic.Size(10, 10));
+            Scene scene = new Scene();
+            scene.AddObjectOnScene(rect);
+            scene.AddObjectOnScene(ell);
+            FabricScene.AddScene("Primer", scene);
 
-        }
-        private void Update()
-        {
-
-        }
-        private void Render()
-        {
-            Rectangle rect = new Rectangle();
-            rect.Width = 100;
-            rect.Height = 50;
-            rect.Fill = Brushes.Red;
-            Canvas.SetLeft(rect, 20);
-            Canvas.SetTop(rect, 40);
-            Canvas.Children.Add(rect);
+            AddVisualChild(FabricScene.GetScene("Primer").Canvas);
         }
     }
 }

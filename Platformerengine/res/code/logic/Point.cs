@@ -2,8 +2,8 @@
 namespace Platformerengine.res.code.logic {
  public class Point
     {
-        private double X { get; set; }
-        private double Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
 
         public Point(double x = 0, double y = 0)
         {

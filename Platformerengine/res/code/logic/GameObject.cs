@@ -1,15 +1,29 @@
-﻿using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic {
-    public class GameObject : GameEnvironment
-    {
-        public string id {get;}
-        public GameObject(string _id, int _x, int _y, Shape shape)
-        {
+    public class GameObject {
+        public GameObject(string _id, string _Tag, Shape shape, Point Point, Size anySize) {
             Shape = shape;
+            Id = _id;
+            Tag = _Tag;
+            Transform = new Transform(Point, anySize, this);
         }
-        public Shape Shape{ get; set; }
+        public Transform Transform { get; set; }
+        public string Id { get; }
+        public Shape Shape { get; set; }
         public string Tag { get; set; }
+        protected void ChangePosithion(Point Posithion) {
 
+            Canvas.SetLeft(Shape, Posithion.X);
+            Canvas.SetTop(Shape, Posithion.Y);
+            Transform.Position = Posithion;
+        }
+        protected void ChangeSize(Size Size) {
+
+            Shape.Width = Size.Width;
+            Shape.Height = Size.Height;
+            Transform.Size = Size;
+        }
     }
 }
