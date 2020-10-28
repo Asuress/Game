@@ -2,6 +2,7 @@ using Platformerengine.res.code.graphic;
 using Platformerengine.res.code.Graphics;
 using Platformerengine.res.code.logic;
 using Platformerengine.res.code.physics;
+using Platformerengine.res.game_res.game_code;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,12 @@ namespace Platformerengine.res.code.main {
         }
         public void Start() {
             IsGameRun = true;
-            Shape shape = new Rectangle();
+            Scene meteorits = new MeteoritScene(new logic.Size(WindowHeight, WindowWidth));
+            
+            FabricScene.AddScene("Meteorits".ToString(), meteorits);
+            viewbox.Child = FabricScene.GetScene("Meteorits").canvas;
+
+            /*Shape shape = new Rectangle();
             shape.Height = 100;
             shape.Width = 200;
             shape.Fill = Brushes.Black;
@@ -54,8 +60,21 @@ namespace Platformerengine.res.code.main {
             scene.AddObjectOnScene(rect);
             scene.AddObjectOnScene(ell);
             FabricScene.AddScene("Primer", scene);
+<<<<<<< Updated upstream
 
             AddVisualChild(FabricScene.GetScene("Primer").canvas);
+=======
+<<<<<<< HEAD
+            FabricScene.GetScene("Primer").canvas.Width = 1000;
+            FabricScene.GetScene("Primer").canvas.Height = 500;
+            //AddVisualChild(FabricScene.GetScene("Primer").canvas);
+            viewbox.Child = FabricScene.GetScene("Primer").canvas;
+            */
+=======
+
+            AddVisualChild(FabricScene.GetScene("Primer").canvas);
+>>>>>>> Scene
+>>>>>>> Stashed changes
         }
     }
 }
