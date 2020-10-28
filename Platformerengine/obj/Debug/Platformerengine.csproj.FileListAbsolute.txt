@@ -1,0 +1,17 @@
+C:\development\projects\Game\Platformerengine\bin\Debug\Platformerengine.exe.config
+C:\development\projects\Game\Platformerengine\bin\Debug\Platformerengine.exe
+C:\development\projects\Game\Platformerengine\bin\Debug\Platformerengine.pdb
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.csprojAssemblyReference.cache
+C:\development\projects\Game\Platformerengine\obj\Debug\res\code\main\Game.g.cs
+C:\development\projects\Game\Platformerengine\obj\Debug\res\code\main\MainWindow.g.cs
+C:\development\projects\Game\Platformerengine\obj\Debug\App.g.cs
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine_MarkupCompile.cache
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine_MarkupCompile.lref
+C:\development\projects\Game\Platformerengine\obj\Debug\res\code\main\Game.baml
+C:\development\projects\Game\Platformerengine\obj\Debug\res\code\main\MainWindow.baml
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.g.resources
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.Properties.Resources.resources
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.csproj.GenerateResource.cache
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.csproj.CoreCompileInputs.cache
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.exe
+C:\development\projects\Game\Platformerengine\obj\Debug\Platformerengine.pdb
