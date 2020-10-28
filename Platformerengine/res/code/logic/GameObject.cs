@@ -1,4 +1,4 @@
-======== Game_obj_draw
+
 ﻿
 using System.Collections.Generic;
 using System.Windows.Controls;
@@ -38,8 +38,5 @@ namespace Platformerengine.res.code.logic
         public string Id { get; }
         public Shape Shape { get; set; }
         public string Tag { get; set; }
-    }
-}
 
-=======
 
