@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Platformerengine.res.code.logic
 {
-    class Size
+    public class Size
     {
         Size(double width, double height)
         {
             Width = width;
             Height = height;
         }
-        double Width { 
+        public double Width { 
             get { return Width; }
             set
             {
@@ -23,7 +23,7 @@ namespace Platformerengine.res.code.logic
                     Width = value;
             }
         }
-        double Height
+        public double Height
         {
             get { return Width; }
             set

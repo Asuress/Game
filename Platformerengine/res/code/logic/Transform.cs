@@ -1,25 +1,67 @@
 ﻿using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic
 {
     public class Transform : IComponent
     {
-        private Point currentPoint { get; set; }
-        private Shape currentShape { get; set; }
+        public Point Point {
+            get
+            {
+                return _Point;
+            }
 
-        public Transform(Point anyPoint, Shape shape)
+            set
+            {
+                _Point = value;
+                PositionChange(Parent,_Point);
+
+            }}
+        private Point _Point;
+        private GameObject Parent {get;}
+        public Size  Size {
+            get
+            {
+                return _Size;
+            }
+            set
+            {
+                _Size = value;
+                SizeChange(Parent, _Size);
+            }
+            
+        }
+        private Size _Size;
+        public RotateTransform RotateTransform { get; set; }
+
+        public Transform(Point anyPoint,Size anySize, GameObject parent)
+
         {
-            currentPoint = anyPoint;
-            currentShape = shape;
+            Parent = parent;
+            Point = anyPoint;
+            Size = anySize;
         }
 
-        public void Turn(double degree)
+        public void Rotate(double degree)
         {
-            currentShape.RenderTransform =  new RotateTransform(degree);   
+            RotateTransform = new RotateTransform(degree);
+            Parent.Shape.RenderTransform = RotateTransform;
+            RotateChange(Parent,RotateTransform);
+
         }
+        public delegate void RotateHandler(GameObject parent, RotateTransform any);
+
+        public delegate void SizeChangeHadler(GameObject parent, Size s);
+
+        public delegate void PositionChangeHandler(GameObject parent, Point p);
+
+       
         
-
+        public event RotateHandler RotateChange = delegate { };
+        public event SizeChangeHadler SizeChange = delegate{  };
+        public event PositionChangeHandler PositionChange = delegate{  };
+        
         public override string ToString()
         {
             return base.ToString();

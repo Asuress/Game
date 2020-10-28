@@ -1,3 +1,4 @@
+======= Game_obj_draw
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -67,8 +68,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="res\code\Graphics\FabricScene.cs" />
-    <Compile Include="res\code\Graphics\Scene.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
     <Compile Include="res\code\logic\Size.cs" />
     <Compile Include="res\code\logic\Transform.cs" />
@@ -113,7 +112,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="res\assets\" />
+    <Folder Include="res\code\graphics\" />
     <Folder Include="res\settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-</Project>
+=======

@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+========= Game_obj_draw
+﻿
 namespace Platformerengine.res.code.logic {
-    public class Point
+ public class Point
     {
         public double X { get; set; }
         public double Y { get; set; }
-        public Point(double _x = 0, double _y = 0)
+
+        public Point(double x = 0, double y = 0)
         {
-            X = _x;
-            Y = _y;
+            X = x;
+            Y = y;
         }
-        public Point(Point _p)
+
+        public Point(Point p)
         {
-            X = _p.X;
-            Y = _p.Y;
+            X = p.X;
+            Y = p.Y;
         }
-        public override bool Equals(object any)
+        public override bool Equals(object o)
         {
-            if (any is Point)
+            if (o is Point)
             {
-                return Equals(this, any);
+                return Equals(this, o);
             }
             return false;
         }
@@ -53,9 +51,20 @@ namespace Platformerengine.res.code.logic {
         {
             return new Point(p1.X - p2.X, p1.Y - p2.Y);
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public static bool operator !=(Point p1, Point p2) => !(p1.X == p1.X && p1.Y == p2.Y);
         public static bool operator ==(Point p1, Point p2) => (p1.X == p2.X && p1.Y == p2.Y);
     }
 }
+
+
+=======
+
+
 
 

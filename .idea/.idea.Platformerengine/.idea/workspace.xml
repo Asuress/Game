@@ -23,15 +23,15 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:Transform" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Game_obj_draw" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5688fe32-fd1f-4d7d-a901-c1238c947799" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Platformerengine/Platformerengine.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/Platformerengine.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/Point.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/Point.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/Vector2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/Vector2.cs" afterDir="false" />
+    <list default="true" id="5688fe32-fd1f-4d7d-a901-c1238c947799" name="Default Changelist" comment="update Transform">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Platformerengine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Platformerengine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/GameObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,22 +41,31 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Transform" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/Asuress/Game" />
+      </set>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Виталик/RiderProjects/Game/Platformerengine/res/code/logic/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Виталик/RiderProjects/Game/Platformerengine/res/code/logic/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Виталик/RiderProjects/Game/Platformerengine/res/code/logic/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Platformerengine/res/code/logic/Point.cs" />
         <option value="$PROJECT_DIR$/Platformerengine/res/code/logic/Vector2.cs" />
+        <option value="$PROJECT_DIR$/Platformerengine/res/code/logic/Size.cs" />
+        <option value="$PROJECT_DIR$/Platformerengine/res/code/IComponent.cs" />
         <option value="$PROJECT_DIR$/Platformerengine/res/code/logic/Transform.cs" />
+        <option value="$PROJECT_DIR$/Platformerengine/res/code/logic/GameObject.cs" />
       </list>
     </option>
   </component>
@@ -100,7 +109,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602239184467</updated>
-      <workItem from="1602239196266" duration="3694000" />
+      <workItem from="1602239196266" duration="5059000" />
+      <workItem from="1602264191752" duration="961000" />
+      <workItem from="1603391428374" duration="2238000" />
+      <workItem from="1603445988850" duration="4561000" />
+      <workItem from="1603538944592" duration="2178000" />
+      <workItem from="1603569775129" duration="1329000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #17 from Asuress/Size_class&#10;&#10;Created Size class">
       <created>1602242825472</created>
@@ -109,13 +123,41 @@
       <option name="project" value="LOCAL" />
       <updated>1602242825472</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Transfrom 0.1">
+      <created>1602242941552</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602242941552</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Rotate">
+      <created>1602264310481</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602264310481</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update Transform">
+      <created>1603449781084</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603449781084</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update">
+      <created>1603570442207</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603570442207</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -138,7 +180,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Transform" />
+                        <option value="Game_obj_draw" />
                       </list>
                     </value>
                   </entry>
@@ -149,41 +191,62 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Transform 0.1" />
     <MESSAGE value="Merge pull request #17 from Asuress/Size_class&#10;&#10;Created Size class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #17 from Asuress/Size_class&#10;&#10;Created Size class" />
+    <MESSAGE value="Transfrom 0.1" />
+    <MESSAGE value="Rotate" />
+    <MESSAGE value="update Transform" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="517" y="237" key="#Notifications" timestamp="1602239362203">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="517" y="237" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1602239362203" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1602242668648">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1603545861913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602242668648" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1602242668646">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603545861913" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1603545861912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602242668646" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1602242668646">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603545861912" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1603545861912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602242668646" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1602242668647">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603545861912" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1603545861913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602242668647" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603545861913" />
+    <state x="0" y="130" key="MergeDialog" timestamp="1603541842313">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="130" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1603541842313" />
+    <state x="218" y="244" key="MultipleFileMergeDialog" timestamp="1603541842322">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="218" y="244" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1603541842322" />
     <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size" timestamp="1602239612530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1602239612530" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602239326903">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603570443437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1602239326903" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603570443437" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603449794791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1603449794791" />
+    <state x="542" y="126" key="git4idea.branch.GitSmartOperationDialog" timestamp="1603539384259">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="542" y="126" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1603539384259" />
   </component>
 </project>
