@@ -83,7 +83,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="res\code\graphic\FabricScene.cs" />
+    <Compile Include="res\code\graphic\Scene.cs" />
     <Compile Include="res\code\logic\GameEnvironment.cs" />
+    <Compile Include="res\code\logic\IGameManager.cs" />
     <Compile Include="res\code\logic\GameObject.cs" />
     <Compile Include="res\code\logic\Size.cs" />
     <Compile Include="res\code\logic\Transform.cs" />
@@ -128,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="res\assets\" />
-    <Folder Include="res\code\graphics\" />
     <Folder Include="res\settings\" />
   </ItemGroup>
   <ItemGroup>

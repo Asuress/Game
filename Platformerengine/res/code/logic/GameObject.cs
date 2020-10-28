@@ -1,5 +1,3 @@
-
-﻿
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -40,5 +38,3 @@ namespace Platformerengine.res.code.logic
         public string Tag { get; set; }
     }
 }
-
-

@@ -7,8 +7,5 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Game">
-
-    <Canvas x:Name="Canvas" Width="400" Height="400">
-
-    </Canvas>
+    
 </Page>
