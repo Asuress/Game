@@ -8,7 +8,7 @@ namespace Platformerengine.res.code.logic
 {
     public class Size
     {
-        Size(double width, double height)
+        public Size(double width = 1, double height =1 )
         {
             Width = width;
             Height = height;
@@ -60,4 +60,5 @@ namespace Platformerengine.res.code.logic
         public static bool operator ==(Size size1, Size size2) => size1.Equals(size2);
         public static bool operator !=(Size size1, Size size2) => !size1.Equals(size2);
     }
+        
 }

@@ -4,9 +4,10 @@ using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic
 {
+    
     public class Transform : IComponent
     {
-        public Point Point {
+        public Point Position {
             get
             {
                 return _Point;
@@ -35,12 +36,20 @@ namespace Platformerengine.res.code.logic
         private Size _Size;
         public RotateTransform RotateTransform { get; set; }
 
-        public Transform(Point anyPoint,Size anySize, GameObject parent)
+        public Transform(GameObject parent,Point anyPoint ,Size anySize )
 
         {
             Parent = parent;
-            Point = anyPoint;
+            Position = anyPoint;
             Size = anySize;
+        }
+
+        public Transform(GameObject parent)
+        {
+            Parent = parent;
+            Position = new Point(1,1);
+            Size = new Size(1,1);
+            
         }
 
         public void Rotate(double degree)
