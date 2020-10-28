@@ -1,10 +1,7 @@
-<<<<<<< Updated upstream
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
-=======
 using System.Windows.Controls;
->>>>>>> Stashed changes
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic
@@ -16,7 +13,7 @@ namespace Platformerengine.res.code.logic
             Shape = shape;
             Id = _id;
             Tag = _Tag;
-            Transform = new Transform(this,Point,anySize);
+            Transform = new Transform(Point, anySize, this);
             Transform.PositionChange += TransformOnPositionChange;
             Transform.SizeChange += TransformOnSizeChange;
             Transform.Position = Point;
@@ -24,17 +21,11 @@ namespace Platformerengine.res.code.logic
             Move = new Vector2();
         }
 
-<<<<<<< Updated upstream
-        private void TransformOnSizeChange(GameObject parent, Size s)
-        {
-=======
-        public Vector2 Move { get; set; }
-
         private void TransformOnSizeChange(GameObject parent, Size s) {
->>>>>>> Stashed changes
             Shape.Width = s.Width;
             Shape.Height = s.Height;
         }
+        public Vector2 Move { get; set; }
 
         private void TransformOnPositionChange(GameObject parent, Point p)
         {

@@ -70,11 +70,8 @@ namespace Platformerengine.res.code.main {
             //AddVisualChild(FabricScene.GetScene("Primer").canvas);
             viewbox.Child = FabricScene.GetScene("Primer").canvas;
             */
-=======
 
-            AddVisualChild(FabricScene.GetScene("Primer").canvas);
->>>>>>> Scene
->>>>>>> Stashed changes
+            //AddVisualChild(FabricScene.GetScene("Primer").canvas);
         }
     }
 }
