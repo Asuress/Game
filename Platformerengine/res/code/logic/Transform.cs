@@ -4,9 +4,10 @@ using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic
 {
+    
     public class Transform : IComponent
     {
-        public Point Point {
+        public Point Position {
             get
             {
                 return _Point;
@@ -15,12 +16,11 @@ namespace Platformerengine.res.code.logic
             set
             {
                 _Point = value;
-                PointChange(this,_Point);
+                PositionChange(Parent,_Point);
 
             }}
         private Point _Point;
         private GameObject Parent {get;}
-        
         public Size  Size {
             get
             {
@@ -29,44 +29,47 @@ namespace Platformerengine.res.code.logic
             set
             {
                 _Size = value;
-                SizeChange(this, _Size);
+                SizeChange(Parent, _Size);
             }
             
         }
         private Size _Size;
-
         public RotateTransform RotateTransform { get; set; }
 
-        public Transform(Point anyPoint, Shape anyShape,Size anySize, GameObject parent)
+        public Transform(GameObject parent,Point anyPoint ,Size anySize )
 
         {
             Parent = parent;
-            Point = anyPoint;
+            Position = anyPoint;
             Size = anySize;
+        }
+
+        public Transform(GameObject parent)
+        {
+            Parent = parent;
+            Position = new Point(1,1);
+            Size = new Size(1,1);
+            
         }
 
         public void Rotate(double degree)
         {
             RotateTransform = new RotateTransform(degree);
             Parent.Shape.RenderTransform = RotateTransform;
-            RotateChange(this,RotateTransform);
+            RotateChange(Parent,RotateTransform);
 
         }
-        public void ChangePoint(Point anyPoint)
-        {
-            Point = anyPoint;
-        }
-        public delegate void RotateHandler(Transform This, RotateTransform any);
+        public delegate void RotateHandler(GameObject parent, RotateTransform any);
 
-        public delegate void SizeChangeHadler(Transform This, Size s);
+        public delegate void SizeChangeHadler(GameObject parent, Size s);
 
-        public delegate void PointChangeHandler(Transform This, Point p);
+        public delegate void PositionChangeHandler(GameObject parent, Point p);
 
        
         
         public event RotateHandler RotateChange = delegate { };
         public event SizeChangeHadler SizeChange = delegate{  };
-        public event PointChangeHandler PointChange = delegate{  };
+        public event PositionChangeHandler PositionChange = delegate{  };
         
         public override string ToString()
         {

@@ -1,9 +1,10 @@
+========= Game_obj_draw
 ﻿
 namespace Platformerengine.res.code.logic {
  public class Point
     {
-        private double X { get; set; }
-        private double Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
 
         public Point(double x = 0, double y = 0)
         {
@@ -60,5 +61,10 @@ namespace Platformerengine.res.code.logic {
         public static bool operator ==(Point p1, Point p2) => (p1.X == p2.X && p1.Y == p2.Y);
     }
 }
+
+
+=======
+
+
 
 
