@@ -11,6 +11,7 @@ using System.Windows.Controls;
 namespace Platformerengine.res.code.Graphics {
     class FabricScene {
         private Dictionary<string, Scene> Scenes;
+        public Scene CurrentScene { get; set; }
         private static FabricScene Instance;
         private FabricScene() {
             Scenes = new Dictionary<string, Scene>();
@@ -23,8 +24,17 @@ namespace Platformerengine.res.code.Graphics {
             return Instance;
         }
 
+        public void SetCurrentScene(string name) {
+            if (Scenes.ContainsKey(name))
+                CurrentScene = Scenes[name];
+
+        }
+
         public void AddScene(string name, Scene scene) {
             Scenes.Add(name, scene);
+            if (CurrentScene == null) {
+                CurrentScene = scene;
+            }
         }
 
         public Scene GetScene(string name) {

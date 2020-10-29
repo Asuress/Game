@@ -39,10 +39,10 @@ namespace Platformerengine.res.code.main {
         }
         public void Start() {
             IsGameRun = true;
-            Scene meteorits = new MeteoritScene(new logic.Size(WindowHeight, WindowWidth));
-            
-            FabricScene.AddScene("Meteorits".ToString(), meteorits);
-            viewbox.Child = FabricScene.GetScene("Meteorits").canvas;
+            FabricScene.AddScene("Meteorits".ToString(), new MeteoritScene(new logic.Size(WindowHeight, WindowWidth)));
+            FabricScene.SetCurrentScene("Meteorits");
+            viewbox.Child = FabricScene.CurrentScene.canvas;
+            FabricScene.CurrentScene.Start();
 
             /*Shape shape = new Rectangle();
             shape.Height = 100;

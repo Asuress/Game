@@ -42,7 +42,7 @@ namespace Platformerengine.res.code.graphic {
                 }              
             }        
         }
-        public Scene(Size winSize) : base() {
+        public Scene(Size winSize) {
             WindowSize = winSize;
             ListOfObj = new LinkedList<GameObject>();
             Managers = new LinkedList<IGameManager>();
@@ -77,9 +77,12 @@ namespace Platformerengine.res.code.graphic {
 
         protected override void LateUpdate() {
             foreach (var i in Managers) {
-                i.Update();
+                i?.Update();
             }
             foreach (GameObject i in ListOfObj) {
+                i.Transform.Position.X += i.Move.X;
+                i.Transform.Position.Y += i.Move.Y;
+
                 if (i.Shape != null) {
                     if (!canvas.Children.Contains(i.Shape)) {
                         canvas.Children.Add(i.Shape);
