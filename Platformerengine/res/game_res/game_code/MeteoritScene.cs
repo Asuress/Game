@@ -25,14 +25,14 @@ namespace Platformerengine.res.game_res.game_code {
             canvas.SnapsToDevicePixels = true;
             AddMeteorit("1", new Point(50, 50), new Size(50, 50), new Vector2(3,0.5));
             AddMeteorit("2", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-10, 2));
-            //AddMeteorit("3", new Point(50, 50), new Size(100, 100), new Vector2(2, 0.1));
-            //AddMeteorit("4", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-3, 0.9));
-            //AddMeteorit("5", new Point(50, 50), new Size(50, 50), new Vector2(1.3, 0.8));
+            AddMeteorit("3", new Point(50, 50), new Size(100, 100), new Vector2(2, 0.1));
+            AddMeteorit("4", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-3, 0.9));
+            AddMeteorit("5", new Point(50, 50), new Size(50, 50), new Vector2(1.3, 0.8));
             //AddMeteorit("6", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-5, 3));
             //AddMeteorit("7", new Point(50, 50), new Size(100, 100), new Vector2(3, 0.5));
             //AddMeteorit("8", new Point(40 * 4.5, 100), new Size(50, 50), new Vector2(-3, 2));
             AddPlayer("Player", new Point(150, 600), new Size(100, 100));
-            AddPlatform("Platform1", new Point(100, 700), new Size(3000, 100));
+            AddPlatform("Platform1", new Point(100, 700), new Size(30000, 600));
         }
 
         public void AddMeteorit(string id, Point pos, Size size, Vector2 move) {

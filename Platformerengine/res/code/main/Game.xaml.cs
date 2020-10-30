@@ -44,34 +44,6 @@ namespace Platformerengine.res.code.main {
             viewbox.Child = FabricScene.CurrentScene.canvas;
             FabricScene.CurrentScene.Start();
 
-            /*Shape shape = new Rectangle();
-            shape.Height = 100;
-            shape.Width = 200;
-            shape.Fill = Brushes.Black;
-
-            Shape ellipse = new Ellipse();
-            ellipse.Height = 200;
-            ellipse.Width = 50;
-            ellipse.Fill = Brushes.Red;
-
-            GameObject rect = new GameObject("Rect".ToString(), "Player".ToString(), shape, new logic.Point(10, 10), new logic.Size(10, 5));
-            GameObject ell = new GameObject("Ellipse".ToString(), "Enemy".ToString(), ellipse, new logic.Point(50, 20), new logic.Size(10, 10));
-            Scene scene = new Scene();
-            scene.AddObjectOnScene(rect);
-            scene.AddObjectOnScene(ell);
-            FabricScene.AddScene("Primer", scene);
-<<<<<<< Updated upstream
-
-            AddVisualChild(FabricScene.GetScene("Primer").canvas);
-=======
-<<<<<<< HEAD
-            FabricScene.GetScene("Primer").canvas.Width = 1000;
-            FabricScene.GetScene("Primer").canvas.Height = 500;
-            //AddVisualChild(FabricScene.GetScene("Primer").canvas);
-            viewbox.Child = FabricScene.GetScene("Primer").canvas;
-            */
-
-            //AddVisualChild(FabricScene.GetScene("Primer").canvas);
         }
     }
 }
