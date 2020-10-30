@@ -18,6 +18,7 @@ namespace Platformerengine.res.code.physics
         {
             Size = size;
             _Scene = scene;
+            
         }
 
         public Size Size { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Platformerengine.res.code.logic;
+using Platformerengine.res.code.physics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using static Platformerengine.res.code.physics.Collider;
 
 namespace Platformerengine.res.code.graphic {
     public class Scene : GameEnvironment {
         public LinkedList<GameObject> ListOfObj { get; }
         public LinkedList<IGameManager> Managers { get; }
-
-        public Scene(LinkedList<GameObject> obj, LinkedList<IGameManager> manage) {
-            ListOfObj = obj;
-            Managers = manage;
-        }
 
         public Canvas canvas { get; set; }
         public Size WindowSize { get; set; }
@@ -40,8 +38,32 @@ namespace Platformerengine.res.code.graphic {
                     Canvas.SetLeft(i.Shape, i.Transform.Position.X);
                     Canvas.SetTop(i.Shape, i.Transform.Position.Y);
                 }              
-            }        
+            } 
+            
+            foreach (var i in ListOfObj) {
+                if (i.Collider != null)
+                    i.Collider.OnCollisionEnter += IntersectWith;
+            }
+            
         }
+
+        public void IntersectWith(ColliderEventArgs colliderArgs) {
+            if (colliderArgs.Collider?.parent.Tag == "Background") {
+                ImageBrush img = new ImageBrush(
+                    new BitmapImage(
+                        new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/Flash.jpg", UriKind.Absolute)
+                    )
+                );
+                colliderArgs.Collider.parent.Shape.Fill = img;
+                colliderArgs.Collider.parent.Move.X = 0;
+            }
+            
+            if (colliderArgs.Collider?.parent.Tag == "Player") {
+                colliderArgs.Collider.parent.Move.X = 0;
+
+            }
+        }
+
         public Scene(Size winSize) {
             WindowSize = winSize;
             ListOfObj = new LinkedList<GameObject>();
@@ -69,6 +91,8 @@ namespace Platformerengine.res.code.graphic {
             ListOfObj.AddLast(obj);
             Managers.AddLast(manager);
             manager?.Update();
+            obj.AddCollider(new BoxCollider(obj, this));
+            obj.Collider.OnCollisionEnter += IntersectWith;
         }
 
         protected override void EarlyUpdate() {

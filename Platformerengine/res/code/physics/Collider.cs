@@ -29,9 +29,10 @@ namespace Platformerengine.res.code.physics {
         protected Collider(GameObject parent)
         {
             this.parent = parent;
+            Start();
         }
 
-        protected readonly GameObject parent;
+        public GameObject parent { get; set; }
 
         protected void InvokeOnCollisionEnter(Collider collider, Sides side)
         {

@@ -34,6 +34,10 @@ namespace Platformerengine.res.code.logic
             Canvas.SetTop(Shape, p.Y);
         }
 
+        public void AddCollider(Collider col) {
+            Collider = col;
+        }
+
         public Collider Collider { get; set; }
         public Transform Transform { get; set; }
         public string Id { get; }
