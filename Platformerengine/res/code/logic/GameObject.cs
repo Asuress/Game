@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Shapes;
-using Platformerengine.res.code.physics;
 
 namespace Platformerengine.res.code.logic
 {
@@ -34,7 +33,6 @@ namespace Platformerengine.res.code.logic
             Canvas.SetTop(Shape, p.Y);
         }
 
-        public Collider Collider { get; set; }
         public Transform Transform { get; set; }
         public string Id { get; }
         public Shape Shape { get; set; }

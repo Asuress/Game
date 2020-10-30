@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace Platformerengine.res.code.logic {
-    public interface IGameManager {
+    interface IGameManager {
         void StartPosition(Point start);
         void Update();
         void End();
