@@ -34,9 +34,6 @@ namespace Platformerengine.res.game_res.game_code {
                 Parent.Transform.Position.X + Parent.Move.X < WindowSize.Height * 2.5 &&
                 Parent.Transform.Position.Y + Parent.Move.Y < WindowSize.Width * 2.5) {
 
-                //Parent.Transform.Position.X += Parent.Move.X;
-                //Parent.Transform.Position.Y += Parent.Move.Y;
-                Parent.Transform.Position = new Point(Parent.Transform.Position.X + Parent.Move.X, Parent.Transform.Position.Y + Parent.Move.Y);
                 Parent.Transform.Rotate(Parent.Transform.Position.X / 10);
             }
             else {

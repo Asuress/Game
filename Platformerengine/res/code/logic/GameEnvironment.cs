@@ -5,8 +5,9 @@ namespace Platformerengine.res.code.logic
 {
     public abstract class GameEnvironment
     {
-        public GameEnvironment()
-        {
+        public GameEnvironment() { }
+
+        public void Start() {
             CompositionTarget.Rendering += GameLoop;
         }
 
