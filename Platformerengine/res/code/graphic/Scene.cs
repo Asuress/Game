@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Platformerengine.res.code.graphic {
-    class Scene : GameEnvironment {
+    public class Scene : GameEnvironment {
         public LinkedList<GameObject> ListOfObj { get; }
         public LinkedList<IGameManager> Managers { get; }
 
