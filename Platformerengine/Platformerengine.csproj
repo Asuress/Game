@@ -73,6 +73,7 @@
     <Compile Include="res\game_res\game_code\ControllerScript.cs" />
     <Compile Include="res\game_res\game_code\MeteoritScene.cs" />
     <Compile Include="res\game_res\game_code\MeteoritScript.cs" />
+    <Compile Include="res\game_res\game_code\Player.cs" />
     <Page Include="res\code\main\Game.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

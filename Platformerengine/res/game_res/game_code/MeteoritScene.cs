@@ -31,8 +31,8 @@ namespace Platformerengine.res.game_res.game_code {
             //AddMeteorit("6", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-5, 3));
             //AddMeteorit("7", new Point(50, 50), new Size(100, 100), new Vector2(3, 0.5));
             //AddMeteorit("8", new Point(40 * 4.5, 100), new Size(50, 50), new Vector2(-3, 2));
-            AddPlayer("Player", new Point(150, 800), new Size(100, 100));
-            AddPlatform("Platform1", new Point(100, 900), new Size(3000, 100));
+            AddPlayer("Player", new Point(150, 600), new Size(100, 100));
+            AddPlatform("Platform1", new Point(100, 700), new Size(3000, 100));
         }
 
         public void AddMeteorit(string id, Point pos, Size size, Vector2 move) {
@@ -65,7 +65,7 @@ namespace Platformerengine.res.game_res.game_code {
                     )
                 );
             shape.Fill = img;
-            GameObject player = new GameObject(id, "Player", shape, pos, size);
+            GameObject player = new Player(id, "Player", shape, pos, size);
             player.Move = new Vector2(0, 0);
             IGameManager manager = new ControllerScript();
             manager.SetParent(player);
