@@ -4,7 +4,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic {
-    public class Transform : IComponent {
+    public class Transform {
         public Point Position {
             get {
                 return _Point;

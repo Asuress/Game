@@ -7,7 +7,10 @@ using System.Windows;
 
 namespace Platformerengine.res.code.logic {
     interface IGameManager {
-        void Start();
+        void StartPosition(Point start);
+        void Update();
         void End();
+        void SetWindowSize(Size size);
+        void SetParent(GameObject parent);
     }
 }

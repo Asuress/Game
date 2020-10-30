@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.code.logic
@@ -12,19 +13,19 @@ namespace Platformerengine.res.code.logic
             Shape = shape;
             Id = _id;
             Tag = _Tag;
-            Transform = new Transform(this,Point,anySize);
+            Transform = new Transform(Point, anySize, this);
             Transform.PositionChange += TransformOnPositionChange;
             Transform.SizeChange += TransformOnSizeChange;
             Transform.Position = Point;
             Transform.Size = anySize;
-
+            Move = new Vector2();
         }
 
-        private void TransformOnSizeChange(GameObject parent, Size s)
-        {
+        private void TransformOnSizeChange(GameObject parent, Size s) {
             Shape.Width = s.Width;
             Shape.Height = s.Height;
         }
+        public Vector2 Move { get; set; }
 
         private void TransformOnPositionChange(GameObject parent, Point p)
         {

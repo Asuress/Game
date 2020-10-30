@@ -1,5 +1,4 @@
-======= Game_obj_draw
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -71,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="res\game_res\game_code\MeteoritScene.cs" />
+    <Compile Include="res\game_res\game_code\MeteoritScript.cs" />
     <Page Include="res\code\main\Game.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,7 +96,6 @@
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="res\code\physics\Collider.cs" />
-    <Compile Include="res\code\IComponent.cs" />
     <Compile Include="res\code\logic\Point.cs" />
     <Compile Include="res\code\components\Physics.cs" />
     <Compile Include="res\code\main\MainWindow.xaml.cs">
@@ -130,7 +130,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="res\assets\" />
+    <Folder Include="res\game_res\assets\" />
     <Folder Include="res\settings\" />
   </ItemGroup>
   <ItemGroup>
@@ -146,4 +146,4 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-=======
+</Project>
