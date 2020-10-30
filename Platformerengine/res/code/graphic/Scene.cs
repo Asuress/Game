@@ -75,27 +75,31 @@ namespace Platformerengine.res.code.graphic {
             
         }
 
-        protected override void LateUpdate() {
-            foreach (var i in Managers) {
+        protected override void LateUpdate()
+        {
+            foreach (var i in Managers)
+            {
                 i?.Update();
             }
-            foreach (GameObject i in ListOfObj) {
-                i.Transform.Position.X += i.Move.X;
-                i.Transform.Position.Y += i.Move.Y;
 
-                if (i.Shape != null) {
-                    if (!canvas.Children.Contains(i.Shape)) {
+            foreach (GameObject i in ListOfObj)
+            {
+                if (i.Shape != null)
+                {
+                    if (!canvas.Children.Contains(i.Shape))
+                    {
                         canvas.Children.Add(i.Shape);
-                        
-                        Canvas.SetLeft(i.Shape, i.Transform.Position.X);
-                        Canvas.SetTop(i.Shape, i.Transform.Position.Y);
-                    } else {
-                        Canvas.SetLeft(i.Shape, i.Transform.Position.X);
-                        Canvas.SetTop(i.Shape, i.Transform.Position.Y);                       
+                        i.Transform.Position = new Point(i.Transform.Position.X + i.Move.X,
+                            i.Transform.Position.Y + i.Move.Y);
                     }
+                    else
+                    {
+                        i.Transform.Position = new Point(i.Transform.Position.X + i.Move.X,
+                            i.Transform.Position.Y + i.Move.Y);
+                    }
+
                 }
             }
-           
         }
 
 
