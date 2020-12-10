@@ -14,12 +14,14 @@ using System.Windows.Shapes;
 namespace Platformerengine.res.game_res.game_code {
     class MeteoritScene : Scene {
         public MeteoritScene(Size winSize) : base(winSize) {
-            ImageBrush img = new ImageBrush(
-                new BitmapImage(
-                    new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/cosmos_back3.jpg", UriKind.Absolute)
-                    )
-                );
-            canvas.Background = img;
+            //           ImageBrush img = new ImageBrush(
+            //               new BitmapImage(
+            //                   new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/cosmos_back3.jpg", UriKind.Absolute)
+            //                   )
+            //               );
+            SpriteRepository resoures = SpriteRepository.getInstance();
+
+            canvas.Background = resoures.Sprites["cosmos_back3.jpg"];
             canvas.Height = 1080;
             canvas.Width = 1920;
             canvas.SnapsToDevicePixels = true;
