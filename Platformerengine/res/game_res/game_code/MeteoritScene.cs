@@ -57,8 +57,9 @@ namespace Platformerengine.res.game_res.game_code {
             base.OnCollisionEnter(colliderArgs);
 
             if (colliderArgs.Collider?.parent.Tag == "Background") {
-                colliderArgs.Collider.parent.Shape.Fill = resoures.Sprites["Flash.jpg"];
-                colliderArgs.Collider.parent.Move.X = 0;
+                //colliderArgs.Collider.parent.Shape.Fill = resoures.Sprites["Flash.jpg"];
+                //objects.Remove(colliderArgs.Collider?.parent);
+                objects[colliderArgs.Collider?.parent].SetStatus("bump");
             }
 
             if (colliderArgs.Collider?.parent.Tag == "Player") {           
