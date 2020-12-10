@@ -5,12 +5,9 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 using Platformerengine.res.code.physics;
 
-namespace Platformerengine.res.code.logic
-{
-    public class GameObject
-    {
-        public GameObject(string _id, string _Tag, Shape shape, Point Point, Size anySize)
-        {
+namespace Platformerengine.res.code.logic {
+    public class GameObject {
+        public GameObject(string _id, string _Tag, Shape shape, Point Point, Size anySize) {
             Shape = shape;
             Id = _id;
             Tag = _Tag;
@@ -28,10 +25,13 @@ namespace Platformerengine.res.code.logic
         }
         public Vector2 Move { get; set; }
 
-        private void TransformOnPositionChange(GameObject parent, Point p)
-        {
+        private void TransformOnPositionChange(GameObject parent, Point p) {
             Canvas.SetLeft(Shape, p.X);
             Canvas.SetTop(Shape, p.Y);
+        }
+
+        public void AddCollider(Collider col) {
+            Collider = col;
         }
 
         public Collider Collider { get; set; }

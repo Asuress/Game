@@ -20,6 +20,10 @@ namespace Platformerengine.res.game_res.game_code {
             Parent.Shape.SnapsToDevicePixels = false;
         }
 
+        public void SetStatus(string status) {
+
+        }
+
         public void SetWindowSize(Size size) {
             WindowSize = size;
         }
