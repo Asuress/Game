@@ -12,14 +12,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Platformerengine.res.game_res.game_code {
-    class MeteoritScene : Scene {
+    class MeteoritScene : Scene { 
+        private SpriteRepository resoures { get; set; } = SpriteRepository.getInstance();
         public MeteoritScene(Size winSize) : base(winSize) {
-            ImageBrush img = new ImageBrush(
-                new BitmapImage(
-                    new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/cosmos_back3.jpg", UriKind.Absolute)
-                    )
-                );
-            canvas.Background = img;
+
+            canvas.Background = resoures.Sprites["cosmos_back3.jpg"];
             canvas.Height = 1080;
             canvas.Width = 1920;
             canvas.SnapsToDevicePixels = true;
@@ -39,12 +36,8 @@ namespace Platformerengine.res.game_res.game_code {
             Shape ellipse = new Ellipse();
             ellipse.Height = size.Height;
             ellipse.Width = size.Width;
-            ImageBrush img = new ImageBrush(
-                new BitmapImage(
-                    new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/meteorit1.png", UriKind.Absolute)
-                    )
-                );
-            ellipse.Fill = img;
+            SpriteRepository resourses = SpriteRepository.getInstance();
+            ellipse.Fill = resourses.Sprites["meteorit1.jpg"];
             GameObject meteorit = new GameObject(id, "Background", ellipse, pos, size);
             meteorit.Move = move;
             IGameManager manager = new MeteoritScript();
@@ -59,12 +52,7 @@ namespace Platformerengine.res.game_res.game_code {
             Shape shape = new Rectangle();
             shape.Height = size.Height;
             shape.Width = size.Width;
-            ImageBrush img = new ImageBrush(
-                new BitmapImage(
-                    new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/Player.png", UriKind.Absolute)
-                    )
-                );
-            shape.Fill = img;
+            shape.Fill = resoures.Sprites["Player.jpg"];
             GameObject player = new Player(id, "Player", shape, pos, size);
             player.Move = new Vector2(0, 0);
             IGameManager manager = new ControllerScript();
@@ -76,12 +64,7 @@ namespace Platformerengine.res.game_res.game_code {
             Shape shape = new Rectangle();
             shape.Height = size.Height;
             shape.Width = size.Width;
-            ImageBrush img = new ImageBrush(
-                new BitmapImage(
-                    new Uri("C:/development/projects/Game/Platformerengine/res/game_res/assets/cosmos_back2.jpg", UriKind.Absolute)
-                    )
-                );
-            shape.Fill = img;
+            shape.Fill = resoures.Sprites["cosmos_back2.jpg"];
             GameObject platform = new GameObject(id, "Platform", shape, pos, size);
             AddObjectOnScene(platform);
         }
