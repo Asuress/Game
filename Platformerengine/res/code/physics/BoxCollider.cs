@@ -30,7 +30,7 @@ namespace Platformerengine.res.code.physics
             LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
             double penetrationDepth = 0;
             Vector2 normal = new Vector2();
-            foreach (var go in _Scene.ListOfObj)
+            foreach (var go in _Scene.objects.Keys)
             {
                 if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
                 {
