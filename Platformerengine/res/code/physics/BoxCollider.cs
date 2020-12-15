@@ -28,58 +28,99 @@ namespace Platformerengine.res.code.physics
         protected override void EarlyUpdate()
         {
             LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
+            double penetrationDepth = 0;
+            Vector2 normal = new Vector2();
             foreach (var go in _Scene.ListOfObj)
             {
-                Sides side;
-                if (IntersectWith(go, out side) && go != parent)
+                if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
                 {
                     intersectsWith.AddLast(go);
                     foreach (var intersect in intersectsWith)
                     {
                         if (IsStay && intersect == go)
                         {
-                            InvokeOnCollisionStay(go.Collider, side);
+                            InvokeOnCollisionStay(go.Collider, parent.Collider, penetrationDepth, normal);
                         }
                         else
                         {
                             IsStay = true;
-                            InvokeOnCollisionEnter(go.Collider, side);
+                            InvokeOnCollisionEnter(go.Collider, parent.Collider, penetrationDepth, normal);
                         }
                     }
                 }
-                else if (!IntersectWith(go, out side) && go != parent)
+                else if (!IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
                 {
                     foreach (var intersect in intersectsWith)
                     {
                         if (IsStay && intersect == go)
                         {
                             IsStay = false;
-                            InvokeOnCollisionExit(go.Collider, side);
+                            intersectsWith.Remove(intersect);
+                            InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
                         }
                     }
                 }
             }
         }
 
-        private bool IntersectWith(GameObject gameObject, out Sides side)
+        private bool IntersectWith(GameObject gameObject, ref Vector2 normal, ref double penetrationDepth)
         {
-            if (Math.Abs(parent.Transform.Position.X - gameObject.Transform.Position.X) <= (parent.Transform.Size.Width + gameObject.Transform.Size.Width) / 2 &&
-               Math.Abs(parent.Transform.Position.Y - gameObject.Transform.Position.Y) <= (parent.Transform.Size.Height + gameObject.Transform.Size.Height) / 2)
+            var lengthX = Math.Abs(parent.Transform.Position.X - gameObject.Transform.Position.X);
+            var lengthY = Math.Abs(parent.Transform.Position.Y - gameObject.Transform.Position.Y);
+
+            var summHalfWidth = gameObject.Transform.Size.Width * 0.5 + parent.Transform.Size.Width * 0.5;
+            var summHalfHeight = gameObject.Transform.Size.Height * 0.5 + parent.Transform.Size.Height * 0.5;
+
+            var gapX = lengthX - summHalfWidth;
+            var gapY = lengthY - summHalfHeight;
+
+            if (gapX <= 0 && gapY <= 0)
             {
-                side = default;
-                if (parent.Transform.Position.X - gameObject.Transform.Position.X >= 0)
-                    side = Sides.West;
-                else if (parent.Transform.Position.X - gameObject.Transform.Position.X <= 0)
-                    side = Sides.East;
-                else if (parent.Transform.Position.Y - gameObject.Transform.Position.Y > 0)
-                    side = Sides.North;
-                else if (parent.Transform.Position.Y - gameObject.Transform.Position.Y > 0)
-                    side = Sides.South;
+                penetrationDepth = Math.Max(gapX, gapY);
+
+                //north
+                if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position, parent.Transform.Position + new Point(parent.Transform.Size.Width)))
+                {
+                    penetrationDepth = gapY;
+                    normal = new Vector2(0, -1);
+                }
+                //east
+                else if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position + new Point(parent.Transform.Size.Width), parent.Transform.Position + new Point(parent.Transform.Size.Width, parent.Transform.Size.Height)))
+                {
+                    penetrationDepth = gapX;
+                    normal = new Vector2(1, 0);
+                }
+                //south
+                else if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position + new Point(parent.Transform.Size.Width, parent.Transform.Size.Height), parent.Transform.Position + new Point(0, parent.Transform.Size.Height)))
+                {
+                    penetrationDepth = gapY;
+                    normal = new Vector2(0, 1);
+                }
+                //west
+                else if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position + new Point(0, parent.Transform.Size.Height), parent.Transform.Position))
+                {
+                    penetrationDepth = gapX;
+                    normal = new Vector2(-1, 0);
+                }
                 return true;
             }
-            side = default;
+            return false;
+        }
+        private bool VectorIntersect(Point A, Point B, Point C, Point D)
+        {
+            Vector2 AC = new Vector2(C.X - A.X, C.Y - A.Y);
+            Vector2 AD = new Vector2(D.X - A.X, D.Y - A.Y);
+
+            Vector2 BC = new Vector2(C.X - B.X, C.Y - B.Y);
+            Vector2 BD = new Vector2(D.X - B.X, D.Y - B.Y);
+
+            int zCompSign1 = Math.Sign((BC.X * BD.Y) - (BC.Y * BD.X));
+            int zCompSign2 = Math.Sign((AC.X * AD.Y) - (AC.Y * AD.X));
+
+            if (zCompSign1 != zCompSign2 || zCompSign1 == 0 || zCompSign2 == 0)
+                return true;
+
             return false;
         }
     }
-
 }

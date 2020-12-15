@@ -29,6 +29,11 @@ namespace Platformerengine.res.code.logic {
         }
         private Size _Size;
         public RotateTransform RotateTransform { get; set; }
+        public Point ObjectCenter { 
+            get{
+                return new Point(Position.X + (Size.Width / 2), Position.Y + (Size.Height / 2));
+            } 
+        }
 
         public Transform(Point anyPoint, Size anySize, GameObject parent) {
             Parent = parent;
