@@ -31,6 +31,7 @@ namespace Platformerengine.res.code.physics {
 
         protected Collider(GameObject parent)
         {
+            Start();
             this.parent = parent;
         }
 
