@@ -12,5 +12,6 @@ namespace Platformerengine.res.code.logic {
         void End();
         void SetWindowSize(Size size);
         void SetParent(GameObject parent);
+        void SetStatus(string status);
     }
 }

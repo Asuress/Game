@@ -10,27 +10,29 @@ namespace Platformerengine.res.code.physics
 
         public BoxCollider(GameObject parent, Scene scene) : base(parent)
         {
-            //Parent = parent;
+            Position = parent.Transform.Position;
             Size = parent.Transform.Size;
             _Scene = scene;
         }
-        public BoxCollider(GameObject parent, Scene scene, Size size) : base(parent)
+        public BoxCollider(GameObject parent, Scene scene, Size size, Point position) : base(parent)
         {
+            Position = position;
             Size = size;
             _Scene = scene;
         }
 
+        public Point Position { get; set; }
         public Size Size { get; set; }
 
         bool IsStay = false;
         Scene _Scene;
+        LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
 
         protected override void EarlyUpdate()
         {
-            LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
             double penetrationDepth = 0;
             Vector2 normal = new Vector2();
-            foreach (var go in _Scene.ListOfObj)
+            foreach (var go in _Scene.objects.Keys)
             {
                 if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
                 {
@@ -55,7 +57,6 @@ namespace Platformerengine.res.code.physics
                         if (IsStay && intersect == go)
                         {
                             IsStay = false;
-                            intersectsWith.Remove(intersect);
                             InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
                         }
                     }
@@ -65,8 +66,8 @@ namespace Platformerengine.res.code.physics
 
         private bool IntersectWith(GameObject gameObject, ref Vector2 normal, ref double penetrationDepth)
         {
-            var lengthX = Math.Abs(parent.Transform.Position.X - gameObject.Transform.Position.X);
-            var lengthY = Math.Abs(parent.Transform.Position.Y - gameObject.Transform.Position.Y);
+            var lengthX = Math.Abs(parent.Transform.ObjectCenter.X - gameObject.Transform.ObjectCenter.X);
+            var lengthY = Math.Abs(parent.Transform.ObjectCenter.Y - gameObject.Transform.ObjectCenter.Y);
 
             var summHalfWidth = gameObject.Transform.Size.Width * 0.5 + parent.Transform.Size.Width * 0.5;
             var summHalfHeight = gameObject.Transform.Size.Height * 0.5 + parent.Transform.Size.Height * 0.5;
