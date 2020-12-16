@@ -30,8 +30,9 @@ namespace Platformerengine.res.code.physics
 
         protected override void EarlyUpdate()
         {
+            //LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
             double penetrationDepth = 0;
-            Vector2 normal = new Vector2();
+            Vector2 normal = new Vector2(0, 0);
             foreach (var go in _Scene.objects.Keys)
             {
                 if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
@@ -52,15 +53,23 @@ namespace Platformerengine.res.code.physics
                 }
                 else if (!IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
                 {
-                    foreach (var intersect in intersectsWith)
-                    {
-                        if (IsStay && intersect == go)
-                        {
-                            IsStay = false;
-                            InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
-                        }
+                    /*       foreach (var intersect in intersectsWith)
+                           {
+                               if (IsStay && intersect == go)
+                               {
+                                   IsStay = false;
+                                   InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
+                               }
+                           }
+                    */
+                    if (IsStay && intersectsWith.Contains(go)) {
+                        IsStay = false;
+                        intersectsWith.Remove(go);
+                        InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
+
                     }
                 }
+
             }
         }
 

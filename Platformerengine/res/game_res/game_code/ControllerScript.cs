@@ -12,11 +12,10 @@ using System.Windows.Media.Animation;
 namespace Platformerengine.res.game_res.game_code {
     class ControllerScript : IGameManager {
 
-        public bool OnGround { get; set; }
-        public bool HitLeftWall { get; set; }
-        public bool HitRightWall { get; set; }
-        public bool HitCeil { get; set; }
-
+        private bool Ground { get; set; }
+        private bool Top { get; set; }
+        private bool Right { get; set; }
+        private bool Left { get; set; }
         private GameObject Player { get; set; }
         private Scene Scene { get; set; }
         private double Speed { get; set; }
@@ -38,38 +37,63 @@ namespace Platformerengine.res.game_res.game_code {
             Speed = 0;
             MaxSpeed = 20;
             Acceleration = 1;
-            g = 1;
+            g = 1.5;
             fallSpeed = 0;
             JumpHeight = 20;
+            Player.Collider.OnCollisionEnter += OnCollisionEnter;
+            Player.Collider.OnCollisionExit += OnCollisionExit;
+            Player.Collider.OnCollisionStay += OnCollisionStay;
+        }
+
+        private void OnCollisionStay(code.physics.Collider.ColliderEventArgs colliderArgs) {
+           /* if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Ground = true;
+            }
+            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Top = true;
+            }
+            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Left = true;
+            }
+            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Right = true;
+            }
+           */
+        }
+
+        private void OnCollisionExit(code.physics.Collider.ColliderEventArgs colliderArgs) {
+            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+                Right = false;
+            }
+            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+                Left = false;
+            }
+            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+                Ground = false;
+            }         
+            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+                Top = false;
+            }
+        }
+
+        private void OnCollisionEnter(code.physics.Collider.ColliderEventArgs colliderArgs) {
+            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Ground = true;
+            }
+            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Top = true;
+            }
+            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Left = true;
+            }
+            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+                Right = true;
+            }
         }
 
         public void SetStatus(string status) {
-            switch (status) {
-                case "OnGround":
-                    OnGround = true;
-                    break;
-                case "NotOnGround":
-                    OnGround = false;
-                    break;
-                case "HitLeftWall":
-                    HitLeftWall = true;
-                    break;
-                case "HitRightWall":
-                    HitRightWall = true;
-                    break;
-                case "NoLeftObstacles":
-                    HitLeftWall = false;
-                    break;
-                case "NoRigthObstacles":
-                    HitRightWall = false;
-                    break;
-                case "HitCeil":
-                    HitCeil = true;
-                    break;
-                case "NotHitCeil":
-                    HitCeil = false;
-                    break;
-            }
+
+            
         }
 
         public void SetWindowSize(Size size) { }
@@ -84,12 +108,12 @@ namespace Platformerengine.res.game_res.game_code {
             } else
                 Scene = fabric.CurrentScene;
 
-            if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right)) {
+            if ((Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))) {
                 if (Speed - Acceleration > -1 * MaxSpeed)
                     Speed -= Acceleration;
                 else
                     Speed = -1 * MaxSpeed;
-            } else if (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left)) {
+            } else if ((Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))) {
                 if (Speed + Acceleration < MaxSpeed)
                     Speed += Acceleration;
                 else
@@ -109,24 +133,32 @@ namespace Platformerengine.res.game_res.game_code {
             }
             fallSpeed += g;
 
-            if (OnGround && (Keyboard.IsKeyDown(Key.W) || (Keyboard.IsKeyDown(Key.Up)))) {
+            if (Ground && (Keyboard.IsKeyDown(Key.W) || (Keyboard.IsKeyDown(Key.Up)))) {
                 fallSpeed = -JumpHeight;
-                OnGround = false;
             }
 
 
             foreach (var i in Scene.objects) {
                 if (i.Key.Tag != "Background" && i.Key.Tag != "Player") {
-                    if (OnGround) {
-                        Player.Move.Y = 0;
-                    } else
+                    if (fallSpeed < 0 || !Ground)
                         Player.Move.Y = fallSpeed;
-
-                    if (Speed > 0 && HitRightWall) {
+                    else if (Ground) {
+                        Player.Move.Y = 0;
+                        fallSpeed = 0;
+                    }
+                        
+            /*        if (Speed > 0 && Normal.X == 1) {
                         Speed = 0;
                     }
-                    if (Speed < 0 && HitLeftWall)
+                    if (Speed < 0 && Normal.X == -1)
                         Speed = 0;
+            */
+                    if (Right && Speed < 0) {
+                        Speed = 0;
+                    }
+                    if (Left && Speed > 0) {
+                        Speed = 0;
+                    }
 
                     i.Key.Move.X = Speed;
                 }
