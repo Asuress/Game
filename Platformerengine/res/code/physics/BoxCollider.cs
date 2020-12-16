@@ -26,55 +26,69 @@ namespace Platformerengine.res.code.physics
 
         bool IsStay = false;
         Scene _Scene;
-        LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
+        
+        LinkedList<GameObject> intersectedWith = new LinkedList<GameObject>();
 
         protected override void EarlyUpdate()
         {
             //LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
-            double penetrationDepth = 0;
-            Vector2 normal = new Vector2(0, 0);
+            LinkedList<GameObject> intersectWith = new LinkedList<GameObject>();
             foreach (var go in _Scene.objects.Keys)
             {
-                if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
+                double penetrationDepth = 0;
+                Vector2 normal = new Vector2(0, 0);
+                var isIntersect = IntersectWith(go, ref normal, ref penetrationDepth);
+                if (isIntersect && go != parent)
                 {
-                    intersectsWith.AddLast(go);
-                    foreach (var intersect in intersectsWith)
+                    intersectWith.AddLast(go);
+                    if (intersectedWith.Contains(go))
                     {
-                        if (IsStay && intersect == go)
-                        {
-                            InvokeOnCollisionStay(go.Collider, parent.Collider, penetrationDepth, normal);
-                        }
-                        else
-                        {
-                            IsStay = true;
-                            InvokeOnCollisionEnter(go.Collider, parent.Collider, penetrationDepth, normal);
-                        }
+                        InvokeOnCollisionStay(go.Collider, parent.Collider, penetrationDepth, normal);
+                    }
+                    else
+                    {
+                        InvokeOnCollisionEnter(go.Collider, parent.Collider, penetrationDepth, normal);
                     }
                 }
-                else if (!IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
+                else if(!isIntersect && go != parent && intersectedWith.Contains(go))
                 {
-                    /*       foreach (var intersect in intersectsWith)
-                           {
-                               if (IsStay && intersect == go)
-                               {
-                                   IsStay = false;
-                                   InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
-                               }
-                           }
-                    */
-                    if (IsStay && intersectsWith.Contains(go)) {
-                        IsStay = false;
-                        intersectsWith.Remove(go);
-                        InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
-
-                    }
+                    InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
                 }
-
             }
+
+            //foreach (var go in _Scene.objects.Keys)
+            //{
+            //    if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
+            //    {
+            //        intersectWith.AddLast(go);
+            //        foreach (var intersect in intersectWith)
+            //        {
+            //            if (IsStay && intersect == go)
+            //            {
+            //                InvokeOnCollisionStay(go.Collider, parent.Collider, penetrationDepth, normal);
+            //            }
+            //            else
+            //            {
+            //                IsStay = true;
+            //                InvokeOnCollisionEnter(go.Collider, parent.Collider, penetrationDepth, normal);
+            //            }
+            //        }
+            //    }
+            //    else if (!IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
+            //    {
+            //        if (IsStay && intersectedWith.Contains(go)) {
+            //            IsStay = false;
+            //            intersectWith.Remove(go);
+            //            InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
+            //        }
+            //    }
+            //}
+            intersectedWith = intersectWith;
         }
 
         private bool IntersectWith(GameObject gameObject, ref Vector2 normal, ref double penetrationDepth)
         {
+            normal = new Vector2(0, 0);
             Vector2 n = new Vector2(parent.Transform.ObjectCenter.X - gameObject.Transform.ObjectCenter.X,
                 parent.Transform.ObjectCenter.Y - gameObject.Transform.ObjectCenter.Y);
             var a_extentX = parent.Transform.Size.Width / 2;
