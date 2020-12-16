@@ -66,44 +66,41 @@ namespace Platformerengine.res.code.physics
 
         private bool IntersectWith(GameObject gameObject, ref Vector2 normal, ref double penetrationDepth)
         {
-            var lengthX = Math.Abs(parent.Transform.ObjectCenter.X - gameObject.Transform.ObjectCenter.X);
-            var lengthY = Math.Abs(parent.Transform.ObjectCenter.Y - gameObject.Transform.ObjectCenter.Y);
+            Vector2 n = new Vector2(parent.Transform.ObjectCenter.X - gameObject.Transform.ObjectCenter.X,
+                parent.Transform.ObjectCenter.Y - gameObject.Transform.ObjectCenter.Y);
+            var a_extentX = parent.Transform.Size.Width / 2;
+            var b_extentX = gameObject.Transform.Size.Width / 2;
 
-            var summHalfWidth = gameObject.Transform.Size.Width * 0.5 + parent.Transform.Size.Width * 0.5;
-            var summHalfHeight = gameObject.Transform.Size.Height * 0.5 + parent.Transform.Size.Height * 0.5;
+            var x_overlap = a_extentX + b_extentX - Math.Abs(n.X);
 
-            var gapX = lengthX - summHalfWidth;
-            var gapY = lengthY - summHalfHeight;
-
-            if (gapX <= 0 && gapY <= 0)
+            if (x_overlap > 0)
             {
-                penetrationDepth = Math.Max(gapX, gapY);
+                var a_extentY = parent.Transform.Size.Height / 2;
+                var b_extentY = gameObject.Transform.Size.Height / 2;
 
-                //north
-                if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position, parent.Transform.Position + new Point(parent.Transform.Size.Width)))
+                var y_overlap = a_extentY + b_extentY - Math.Abs(n.Y);
+
+                if (y_overlap > 0)
                 {
-                    penetrationDepth = gapY;
-                    normal = new Vector2(0, -1);
+                    if (x_overlap > y_overlap)
+                    {
+                        if (n.Y < 0)
+                            normal = new Vector2(0, -1);
+                        else
+                            normal = new Vector2(0, 1);
+                        penetrationDepth = x_overlap;
+                        return true;
+                    }
+                    else
+                    {
+                        if (n.X < 0)
+                            normal = new Vector2(-1, 0);
+                        else
+                            normal = new Vector2(1, 0);
+                        penetrationDepth = y_overlap;
+                        return true;
+                    }
                 }
-                //east
-                else if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position + new Point(parent.Transform.Size.Width), parent.Transform.Position + new Point(parent.Transform.Size.Width, parent.Transform.Size.Height)))
-                {
-                    penetrationDepth = gapX;
-                    normal = new Vector2(1, 0);
-                }
-                //south
-                else if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position + new Point(parent.Transform.Size.Width, parent.Transform.Size.Height), parent.Transform.Position + new Point(0, parent.Transform.Size.Height)))
-                {
-                    penetrationDepth = gapY;
-                    normal = new Vector2(0, 1);
-                }
-                //west
-                else if (VectorIntersect(parent.Transform.ObjectCenter, gameObject.Transform.ObjectCenter, parent.Transform.Position + new Point(0, parent.Transform.Size.Height), parent.Transform.Position))
-                {
-                    penetrationDepth = gapX;
-                    normal = new Vector2(-1, 0);
-                }
-                return true;
             }
             return false;
         }
