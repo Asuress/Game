@@ -7,7 +7,6 @@ namespace Platformerengine.res.code.physics
 {
     public class BoxCollider : Collider
     {
-
         public BoxCollider(GameObject parent, Scene scene) : base(parent)
         {
             Position = parent.Transform.Position;
@@ -23,15 +22,12 @@ namespace Platformerengine.res.code.physics
 
         public Point Position { get; set; }
         public Size Size { get; set; }
-
-        bool IsStay = false;
         Scene _Scene;
         
         LinkedList<GameObject> intersectedWith = new LinkedList<GameObject>();
 
         protected override void EarlyUpdate()
         {
-            //LinkedList<GameObject> intersectsWith = new LinkedList<GameObject>();
             LinkedList<GameObject> intersectWith = new LinkedList<GameObject>();
             foreach (var go in _Scene.objects.Keys)
             {
@@ -55,34 +51,6 @@ namespace Platformerengine.res.code.physics
                     InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
                 }
             }
-
-            //foreach (var go in _Scene.objects.Keys)
-            //{
-            //    if (IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
-            //    {
-            //        intersectWith.AddLast(go);
-            //        foreach (var intersect in intersectWith)
-            //        {
-            //            if (IsStay && intersect == go)
-            //            {
-            //                InvokeOnCollisionStay(go.Collider, parent.Collider, penetrationDepth, normal);
-            //            }
-            //            else
-            //            {
-            //                IsStay = true;
-            //                InvokeOnCollisionEnter(go.Collider, parent.Collider, penetrationDepth, normal);
-            //            }
-            //        }
-            //    }
-            //    else if (!IntersectWith(go, ref normal, ref penetrationDepth) && go != parent)
-            //    {
-            //        if (IsStay && intersectedWith.Contains(go)) {
-            //            IsStay = false;
-            //            intersectWith.Remove(go);
-            //            InvokeOnCollisionExit(go.Collider, parent.Collider, penetrationDepth, normal);
-            //        }
-            //    }
-            //}
             intersectedWith = intersectWith;
         }
 
