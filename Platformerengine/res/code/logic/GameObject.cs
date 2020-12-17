@@ -6,7 +6,7 @@ using System.Windows.Shapes;
 using Platformerengine.res.code.physics;
 
 namespace Platformerengine.res.code.logic {
-    public class GameObject {
+    public class GameObject : GameEnvironment {
         public GameObject(string _id, string _Tag, Shape shape, Point Point, Size anySize) {
             Shape = shape;
             Id = _id;

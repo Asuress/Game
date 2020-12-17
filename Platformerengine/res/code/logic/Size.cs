@@ -1,3 +1,4 @@
+using Platformerengine.res.game_res.game_code;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace Platformerengine.res.code.logic
         }
 
         private double height;
+        internal SpriteRepository resourses;
+
         public Vector2 SizeToVector()
         {
             return new Vector2(Width, Height);

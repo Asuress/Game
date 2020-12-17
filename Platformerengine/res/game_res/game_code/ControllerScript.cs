@@ -45,46 +45,46 @@ namespace Platformerengine.res.game_res.game_code {
         }
 
         private void OnCollisionStay(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Ground = true;
             }
-            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Top = true;
             }
-            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Left = true;
             }
-            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Right = true;
             }
         }
 
         private void OnCollisionExit(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform"){
                 Right = false;
             }
-            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Left = false;
             }
-            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Ground = false;
             }         
-            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Top = false;
             }
         }
 
         private void OnCollisionEnter(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Ground = true;
             }
-            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Top = true;
             }
-            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Left = true;
             }
-            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
+            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
                 Right = true;
             }
 
@@ -152,12 +152,6 @@ namespace Platformerengine.res.game_res.game_code {
                         fallSpeed = 0;
                     }
                         
-            /*        if (Speed > 0 && Normal.X == 1) {
-                        Speed = 0;
-                    }
-                    if (Speed < 0 && Normal.X == -1)
-                        Speed = 0;
-            */
                     if (Right && Speed < 0) {
                         Speed = 0;
                     }

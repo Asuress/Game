@@ -56,6 +56,10 @@ namespace Platformerengine.res.game_res.game_code {
             AddObjectOnScene(new Platform("Platform2", new Point(1200, 850), new Size(200, 50)));
             AddObjectOnScene(new Platform("Platform2", new Point(1400, 700), new Size(200, 50)));
             AddObjectOnScene(new Platform("Platform2", new Point(1600, 400), new Size(200, 50)));
+            HiddenBlock hiddenBlock = new HiddenBlock("hidden", new Point(1500, 600));
+            AddObjectOnScene(hiddenBlock);
+            //hiddenBlock.Start();
+            hiddenBlock.hiddenBlockScript.SetParent(hiddenBlock);
 
             //AddPlayer("Player2", new Point(150, 500), new Size(100, 100), new Vector2(-1, 0));
             //AddPlatform("Platform", new Point(0, 700), new Size(2000, 500));

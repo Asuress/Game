@@ -36,14 +36,6 @@ namespace Platformerengine.res.game_res.game_code {
                 );
                 Sprites.Add(file.Name, img);
             }
-            /*foreach (FileInfo file in dir.EnumerateFiles("*.png")) {
-                ImageBrush img = new ImageBrush(
-                    new BitmapImage(
-                        new Uri(file.FullName, UriKind.RelativeOrAbsolute)
-                    )
-                );
-                Sprites.Add(file.Name, img);
-            }*/
 
             foreach (FileInfo file in dir.EnumerateFiles("ground*.jpg")) {
                 ImageBrush img = new ImageBrush(
