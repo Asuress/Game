@@ -71,9 +71,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="res\code\physics\BoxCollider.cs" />
+    <Compile Include="res\game_res\game_code\Background.cs" />
+    <Compile Include="res\game_res\game_code\Coin.cs" />
+    <Compile Include="res\game_res\game_code\CoinScript.cs" />
     <Compile Include="res\game_res\game_code\ControllerScript.cs" />
     <Compile Include="res\game_res\game_code\MeteoritScene.cs" />
     <Compile Include="res\game_res\game_code\MeteoritScript.cs" />
+    <Compile Include="res\game_res\game_code\Platform.cs" />
     <Compile Include="res\game_res\game_code\Player.cs" />
     <Compile Include="res\game_res\game_code\SpriteRepository.cs" />
     <Page Include="res\code\main\Game.xaml">

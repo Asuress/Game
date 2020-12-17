@@ -11,12 +11,11 @@ using System.Windows.Media.Animation;
 
 namespace Platformerengine.res.game_res.game_code {
     class ControllerScript : IGameManager {
-
+        public Player Player { get; set; }
         private bool Ground { get; set; }
         private bool Top { get; set; }
         private bool Right { get; set; }
         private bool Left { get; set; }
-        private GameObject Player { get; set; }
         private Scene Scene { get; set; }
         private double Speed { get; set; }
         private double MaxSpeed { get; set; }
@@ -33,60 +32,64 @@ namespace Platformerengine.res.game_res.game_code {
         }
 
         public void SetParent(GameObject parent) {
-            Player = parent;
+            Player = (Player)parent;
             Speed = 0;
             MaxSpeed = 20;
             Acceleration = 1;
             g = 1.5;
             fallSpeed = 0;
-            JumpHeight = 20;
+            JumpHeight = 30;
             Player.Collider.OnCollisionEnter += OnCollisionEnter;
             Player.Collider.OnCollisionExit += OnCollisionExit;
             Player.Collider.OnCollisionStay += OnCollisionStay;
         }
 
         private void OnCollisionStay(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Ground = true;
             }
-            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Top = true;
             }
-            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Left = true;
             }
-            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Right = true;
             }
         }
 
         private void OnCollisionExit(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Right = false;
             }
-            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Left = false;
             }
-            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Ground = false;
             }         
-            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Top = false;
             }
         }
 
         private void OnCollisionEnter(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Ground = true;
             }
-            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Top = true;
             }
-            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Left = true;
             }
-            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag != "Background" && colliderArgs.Collider.parent.Tag != "Coin") {
                 Right = true;
+            }
+
+            if (colliderArgs.Collider.parent.Tag == "Coin") {
+                Player.AddScore(100);
             }
         }
 
@@ -163,6 +166,9 @@ namespace Platformerengine.res.game_res.game_code {
                     }
 
                     i.Key.Move.X = Speed;
+                }
+                else if (i.Key.Tag == "Background") {
+                    i.Key.Move.X = Speed / 10;
                 }
                 
                 if (Player.Transform.Position.Y > 800) {

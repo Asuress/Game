@@ -19,8 +19,13 @@ namespace Platformerengine.res.game_res.game_code {
         }
         
         public Dictionary<string, ImageBrush> Sprites { get; set; }
+        public List<ImageBrush> Platforms { get; set; }
+        public List<ImageBrush> Players { get; set; }
+
         private SpriteRepository() {
+            Platforms = new List<ImageBrush>();
             Sprites = new Dictionary<string, ImageBrush>();
+            Players = new List<ImageBrush>();
             DirectoryInfo dir = new DirectoryInfo("../../res/game_res/assets");
 
             foreach (FileInfo file in dir.EnumerateFiles("*.jpg")) {
@@ -31,15 +36,34 @@ namespace Platformerengine.res.game_res.game_code {
                 );
                 Sprites.Add(file.Name, img);
             }
-            foreach (FileInfo file in dir.EnumerateFiles("*.png")) {
+            /*foreach (FileInfo file in dir.EnumerateFiles("*.png")) {
                 ImageBrush img = new ImageBrush(
                     new BitmapImage(
                         new Uri(file.FullName, UriKind.RelativeOrAbsolute)
                     )
                 );
                 Sprites.Add(file.Name, img);
+            }*/
+
+            foreach (FileInfo file in dir.EnumerateFiles("ground*.jpg")) {
+                ImageBrush img = new ImageBrush(
+                    new BitmapImage(
+                        new Uri(file.FullName, UriKind.RelativeOrAbsolute)
+                    )
+                );
+                if (img != null)
+                Platforms.Add(img);
             }
 
+            foreach (FileInfo file in dir.EnumerateFiles("bunny*.jpg")) {
+                ImageBrush img = new ImageBrush(
+                    new BitmapImage(
+                        new Uri(file.FullName, UriKind.RelativeOrAbsolute)
+                    )
+                );
+                if (img != null)
+                    Players.Add(img);
+            }
         }
     }
 }
