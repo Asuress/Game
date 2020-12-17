@@ -86,11 +86,12 @@ namespace Platformerengine.res.code.graphic {
 
         public void AddObjectOnScene(GameObject obj, IGameManager manager = null) {
             objects.Add(obj, manager);
-            manager?.Update();
             obj.AddCollider(new BoxCollider(obj, this));
             obj.Collider.OnCollisionEnter += OnCollisionEnter;
             obj.Collider.OnCollisionStay += OnCollisionStay;
             obj.Collider.OnCollisionExit += OnCollisionExit;
+            manager?.SetParent(obj);
+            manager?.Update();
         }
 
         protected override void EarlyUpdate() {

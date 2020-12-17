@@ -15,93 +15,53 @@ using System.Windows.Shapes;
 namespace Platformerengine.res.game_res.game_code {
     class MeteoritScene : Scene {
         private SpriteRepository resoures { get; set; } = SpriteRepository.getInstance();
+        public Label label { get; set; }
         public MeteoritScene(Size winSize) : base(winSize) {
 
-            canvas.Background = resoures.Sprites["cosmos_back3.jpg"];
+            //canvas.Background = resoures.Sprites["cosmos_back3.jpg"];
+            label = new Label();
+            label.Height = 100;
+            label.Width = 2100;
+            label.Content = "Score: ";
+            label.FontSize = 50;
+            canvas.Children.Add(label);
+            Canvas.SetLeft(label, 20);
+            Canvas.SetTop(label, 20);
+
+            Canvas.SetZIndex(label, 2);
+
             canvas.Height = 1080;
             canvas.Width = 1920;
             canvas.SnapsToDevicePixels = true;
-            //AddMeteorit("1", new Point(50, 50), new Size(50, 50), new Vector2(3,0.5));
-            //AddMeteorit("2", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-10, 2));
-            //AddMeteorit("3", new Point(50, 50), new Size(100, 100), new Vector2(2, 0.1));
-            AddMeteorit("4", new Point(430 * 4.5, 50), new Size(50, 50), new Vector2(-3, 0));
-            AddMeteorit("5", new Point(50, 50), new Size(50, 50), new Vector2(3.3, 0));
-            //AddMeteorit("6", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-5, 3));
-            //AddMeteorit("7", new Point(50, 50), new Size(100, 100), new Vector2(3, 0.5));
-            //AddMeteorit("8", new Point(40 * 4.5, 100), new Size(50, 50), new Vector2(-3, 2));
+            Background background = new Background();
+            AddObjectOnScene(background);
 
-            AddPlayer("Player", new Point(150, 500), new Size(100, 100), new Vector2(0, 0));
-            //AddPlayer("Player2", new Point(300, 500), new Size(100, 100), new Vector2(-1, 0));
-            AddPlatform("Platform", new Point(150, 700), new Size(500, 100));
-            AddPlatform("Platform2", new Point(800, 700), new Size(500, 100));
-        }
+            //AddMeteorit("4", new Point(430 * 4.5, 50), new Size(50, 50), new Vector2(-3, 0));
+            //AddMeteorit("5", new Point(50, 50), new Size(50, 50), new Vector2(3.3, 0));
 
-        public void AddMeteorit(string id, Point pos, Size size, Vector2 move) {
-            Shape ellipse = new Ellipse();
-            ellipse.Height = size.Height;
-            ellipse.Width = size.Width;
+            Player player = new Player("Player2", new Point(150, 500), new Size(100, 100), label);
+            AddObjectOnScene(player, player.Control);
 
-            ellipse.Fill = resoures.Sprites["meteorit1.jpg"];
-            GameObject meteorit = new GameObject(id, "Background", ellipse, pos, size);
-            //meteorit.AddCollider(new BoxCollider(meteorit, this));
-            meteorit.Move = move;
-            IGameManager manager = new MeteoritScript();
-            manager.SetParent(meteorit);
-            manager.StartPosition(meteorit.Transform.Position);
-            manager.SetWindowSize(WindowSize);
-
-            AddObjectOnScene(meteorit, manager);
-        }
-
-        protected override void OnCollisionEnter(Collider.ColliderEventArgs colliderArgs) {
-            base.OnCollisionEnter(colliderArgs);
-
-            if (colliderArgs.Collider.parent.Tag == "Background" && colliderArgs.collider2.parent.Tag == "Background") {
-                //colliderArgs.Collider.parent.Shape.Fill = resoures.Sprites["Flash.jpg"];
-                //objects.Remove(colliderArgs.Collider?.parent);
-                objects[colliderArgs.Collider.parent].SetStatus("bump");
+            for (int i = 0; i < 20; i++) {
+                Coin coin = new Coin(i.ToString(), new Point(500 + i * 50, 660));
+                AddObjectOnScene(coin);
+                coin.Script = new CoinScript();
+                coin.Script.SetParent(coin);
             }
 
-            if (colliderArgs.Collider?.parent.Tag == "Player") {
-                objects[colliderArgs.Collider?.parent].SetStatus("OnGround");
-            }
+            AddObjectOnScene(new Platform("Platform", new Point(0, 700), new Size(200, 50)));
+            AddObjectOnScene(new Platform("Platform2", new Point(400, 700), new Size(200, 50)));
+            AddObjectOnScene(new Platform("Platform2", new Point(800, 850), new Size(200, 50)));
+            AddObjectOnScene(new Platform("Platform2", new Point(1000, 850), new Size(200, 50)));
+            AddObjectOnScene(new Platform("Platform2", new Point(1200, 850), new Size(200, 50)));
+            AddObjectOnScene(new Platform("Platform2", new Point(1400, 700), new Size(200, 50)));
+            AddObjectOnScene(new Platform("Platform2", new Point(1600, 400), new Size(200, 50)));
 
-            if (colliderArgs.Collider?.parent.Tag == "Platform") {
-                colliderArgs.Collider.parent.Move.Y = 0;
-            }
-        }
-
-        protected override void OnCollisionExit(Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.Collider?.parent.Tag == "Player") {
-                objects[colliderArgs.Collider?.parent].SetStatus("NotOnGround");
-            }
-        }
-
-        protected override void OnCollisionStay(Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.Collider?.parent.Tag == "Player") {
-                objects[colliderArgs.Collider?.parent].SetStatus("OnGround");
-            }
-        }
-
-        public void AddPlayer(string id, Point pos, Size size, Vector2 move) {
-            Shape shape = new Rectangle();
-            shape.Height = size.Height;
-            shape.Width = size.Width;
-            shape.Fill = resoures.Sprites["Player.jpg"];
-            GameObject player = new Player(id, "Player", shape, pos, size);
-            player.Move = move;
-            IGameManager manager = new ControllerScript();
-            manager.SetParent(player);
-            AddObjectOnScene(player, manager);
-        }
-
-        public void AddPlatform(string id, Point pos, Size size) {
-            Shape shape = new Rectangle();
-            shape.Height = size.Height;
-            shape.Width = size.Width;
-            shape.Fill = resoures.Sprites["cosmos_back2.jpg"];
-            GameObject platform = new GameObject(id, "Platform", shape, pos, size);
-            AddObjectOnScene(platform);
+            //AddPlayer("Player2", new Point(150, 500), new Size(100, 100), new Vector2(-1, 0));
+            //AddPlatform("Platform", new Point(0, 700), new Size(2000, 500));
+            //AddPlatform("Platform2", new Point(680, 600), new Size(500, 100));
+            //AddPlatform("Platform3", new Point(680, 600), new Size(500, 100));
+            //AddPlatform("Platform2", new Point(700, 600), new Size(500, 100));
         }
     }
 }
