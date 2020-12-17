@@ -174,6 +174,7 @@ namespace Platformerengine.res.game_res.game_code {
                 if (Player.Transform.Position.Y > 800) {
                     Player.Transform.Position.X = 150;
                     Player.Transform.Position.Y = 0;
+                    Player.ZeroidScore();
                     fallSpeed = 0;
                     Speed = 0;
                 }

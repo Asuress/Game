@@ -41,6 +41,7 @@ namespace Platformerengine.res.game_res.game_code {
 
         public void ZeroidScore() {
             Score = 0;
+            label.Content = "Score: " + Score;
         }
 
         public void Damage(int value) {
