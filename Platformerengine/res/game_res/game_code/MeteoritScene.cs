@@ -29,11 +29,12 @@ namespace Platformerengine.res.game_res.game_code {
             //AddMeteorit("6", new Point(430 * 4.5, 100), new Size(50, 50), new Vector2(-5, 3));
             //AddMeteorit("7", new Point(50, 50), new Size(100, 100), new Vector2(3, 0.5));
             //AddMeteorit("8", new Point(40 * 4.5, 100), new Size(50, 50), new Vector2(-3, 2));
-
-            AddPlayer("Player", new Point(150, 500), new Size(100, 100), new Vector2(0, 0));
-            //AddPlayer("Player2", new Point(300, 500), new Size(100, 100), new Vector2(-1, 0));
-            AddPlatform("Platform", new Point(150, 700), new Size(500, 100));
-            AddPlatform("Platform2", new Point(680, 600), new Size(500, 100));
+            Player player = new Player("Player2", new Point(150, 500), new Size(100, 100));
+            AddObjectOnScene(player, player.Control);
+            //AddPlayer("Player2", new Point(150, 500), new Size(100, 100), new Vector2(-1, 0));
+            AddPlatform("Platform", new Point(0, 700), new Size(2000, 500));
+            //AddPlatform("Platform2", new Point(680, 600), new Size(500, 100));
+            //AddPlatform("Platform3", new Point(680, 600), new Size(500, 100));
             //AddPlatform("Platform2", new Point(700, 600), new Size(500, 100));
         }
 
@@ -84,17 +85,6 @@ namespace Platformerengine.res.game_res.game_code {
             }
         }
 
-        public void AddPlayer(string id, Point pos, Size size, Vector2 move) {
-            Shape shape = new Rectangle();
-            shape.Height = size.Height;
-            shape.Width = size.Width;
-            shape.Fill = resoures.Sprites["Player.jpg"];
-            GameObject player = new Player(id, "Player", shape, pos, size);
-            player.Move = move;
-            IGameManager manager = new ControllerScript();
-            //manager.SetParent(player);
-            AddObjectOnScene(player, manager);
-        }
 
         public void AddPlatform(string id, Point pos, Size size) {
             Shape shape = new Rectangle();

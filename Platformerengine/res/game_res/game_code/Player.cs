@@ -8,13 +8,20 @@ using System.Windows.Shapes;
 
 namespace Platformerengine.res.game_res.game_code {
     class Player : Platformerengine.res.code.logic.GameObject {
-        private ControllerScript Control { get; set; }
+        public ControllerScript Control { get; set; }
         private int Score { get; set; }
         private int HealthPoint { get; set; }
         
         private bool IsAlive { get; set; }
 
-        public Player(string _id, string _Tag, Shape shape, Point Point, Size anySize) : base(_id, _Tag, shape, Point, anySize){
+        public Player(string _id, Point Point, Size anySize) : base(_id, "Player", new Rectangle(), Point, anySize) {
+            SpriteRepository resourses = SpriteRepository.getInstance();
+            Shape shape = new Rectangle();
+            shape.Height = anySize.Height;
+            shape.Width = anySize.Width;
+            shape.Fill = resourses.Sprites["Player.jpg"];
+            Shape = shape;
+
             Control = new ControllerScript();
             HealthPoint = 100;
             IsAlive = true;

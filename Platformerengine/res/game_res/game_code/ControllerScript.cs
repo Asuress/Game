@@ -46,7 +46,7 @@ namespace Platformerengine.res.game_res.game_code {
         }
 
         private void OnCollisionStay(code.physics.Collider.ColliderEventArgs colliderArgs) {
-           /* if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player") {
+            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player") {
                 Ground = true;
             }
             if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player") {
@@ -58,7 +58,6 @@ namespace Platformerengine.res.game_res.game_code {
             if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player") {
                 Right = true;
             }
-           */
         }
 
         private void OnCollisionExit(code.physics.Collider.ColliderEventArgs colliderArgs) {
@@ -146,6 +145,9 @@ namespace Platformerengine.res.game_res.game_code {
                         Player.Move.Y = 0;
                         fallSpeed = 0;
                     }
+                    else if (Top) {
+                        fallSpeed = 0;
+                    }
                         
             /*        if (Speed > 0 && Normal.X == 1) {
                         Speed = 0;
@@ -162,7 +164,13 @@ namespace Platformerengine.res.game_res.game_code {
 
                     i.Key.Move.X = Speed;
                 }
-                //Player.Move.Y = fallSpeed;
+                
+                if (Player.Transform.Position.Y > 800) {
+                    Player.Transform.Position.X = 150;
+                    Player.Transform.Position.Y = 0;
+                    fallSpeed = 0;
+                    Speed = 0;
+                }
             }
         }
     }
