@@ -24,7 +24,7 @@ namespace Platformerengine.res.game_res.game_code {
             shape.Height = anySize.Height;
             shape.Width = anySize.Width;
             Random rnd = new Random(DateTime.Now.Second);
-            shape.Fill = resourses.Players[rnd.Next(0, resourses.Players.Count)];
+            shape.Fill = resourses.Sprites["mario.jpg"];
             Shape = shape;
 
             Control = new ControllerScript();

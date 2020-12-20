@@ -38,54 +38,63 @@ namespace Platformerengine.res.game_res.game_code {
             Acceleration = 1;
             g = 1.5;
             fallSpeed = 0;
-            JumpHeight = 30;
+            JumpHeight = 35;
             Player.Collider.OnCollisionEnter += OnCollisionEnter;
             Player.Collider.OnCollisionExit += OnCollisionExit;
             Player.Collider.OnCollisionStay += OnCollisionStay;
         }
 
         private void OnCollisionStay(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Ground = true;
-            }
-            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Top = true;
-            }
-            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Left = true;
-            }
-            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Right = true;
+            if ((colliderArgs.Collider.parent.Tag == "Platform" || colliderArgs.Collider.parent.Tag == "Block") && colliderArgs.collider2.parent.Tag == "Player") {
+                if (colliderArgs.normal.Y == -1) {
+                    Ground = true;
+                }
+                if (colliderArgs.normal.Y == 1) {
+                    Top = true;
+                }
+                if (colliderArgs.normal.X == 1) {
+                    Left = true;
+                }
+                if (colliderArgs.normal.X == -1) {
+                    Right = true;
+                }
             }
         }
 
         private void OnCollisionExit(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform"){
-                Right = false;
-            }
-            if (colliderArgs.normal.X == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Left = false;
-            }
-            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Ground = false;
-            }         
-            if (colliderArgs.normal.Y == 0 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Top = false;
+            if ((colliderArgs.Collider.parent.Tag == "Platform" || colliderArgs.Collider.parent.Tag == "Block") && colliderArgs.collider2.parent.Tag == "Player") {
+                if (colliderArgs.normal.X == 0) {
+                    Right = false;
+                }
+                if (colliderArgs.normal.X == 0) {
+                    Left = false;
+                }
+                if (colliderArgs.normal.Y == 0) {
+                    Ground = false;
+                }
+                if (colliderArgs.normal.Y == 0) {
+                    Top = false;
+                }
             }
         }
 
         private void OnCollisionEnter(code.physics.Collider.ColliderEventArgs colliderArgs) {
-            if (colliderArgs.normal.Y == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Ground = true;
-            }
-            if (colliderArgs.normal.Y == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Top = true;
-            }
-            if (colliderArgs.normal.X == 1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Left = true;
-            }
-            if (colliderArgs.normal.X == -1 && colliderArgs.collider2.parent.Tag == "Player" && colliderArgs.Collider.parent.Tag == "Platform") {
-                Right = true;
+            if ((colliderArgs.Collider.parent.Tag == "Platform" || colliderArgs.Collider.parent.Tag == "Block") && colliderArgs.collider2.parent.Tag == "Player") {
+                if (colliderArgs.normal.Y == -1) {
+                    Ground = true;
+                    fallSpeed = 0;
+                }
+                if (colliderArgs.normal.Y == 1) {
+                    Top = true;
+                }
+                if (colliderArgs.normal.X == 1) {
+                    Left = true;
+                    Speed = 0;
+                }
+                if (colliderArgs.normal.X == -1) {
+                    Right = true;
+                    Speed = 0;
+                }
             }
 
             if (colliderArgs.Collider.parent.Tag == "Coin") {
@@ -110,17 +119,17 @@ namespace Platformerengine.res.game_res.game_code {
             } else
                 Scene = fabric.CurrentScene;
 
-            if ((Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))) {
+            if (!Right && (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))) {
                 if (Speed - Acceleration > -1 * MaxSpeed)
                     Speed -= Acceleration;
                 else
                     Speed = -1 * MaxSpeed;
-            } else if ((Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))) {
+            } else if (!Left && (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))) {
                 if (Speed + Acceleration < MaxSpeed)
                     Speed += Acceleration;
                 else
                     Speed = MaxSpeed;
-            } else if (((Keyboard.IsKeyUp(Key.D) || Keyboard.IsKeyUp(Key.Right)) && (Keyboard.IsKeyUp(Key.A) || Keyboard.IsKeyUp(Key.Left)))) {
+            } else if (((Keyboard.IsKeyUp(Key.D) || Keyboard.IsKeyUp(Key.Right)) && !Right || !Left && (Keyboard.IsKeyUp(Key.A) || Keyboard.IsKeyUp(Key.Left)))) {
                 if (Speed < 0) {
                     if (Speed + Acceleration > 0) {
                         Speed = 0;
@@ -132,6 +141,10 @@ namespace Platformerengine.res.game_res.game_code {
                     } else
                         Speed -= Acceleration;
                 }
+            } else Speed = 0;
+
+            if (Top) {
+                fallSpeed = -fallSpeed;
             }
             fallSpeed += g;
 
@@ -141,6 +154,7 @@ namespace Platformerengine.res.game_res.game_code {
 
 
             foreach (var i in Scene.objects) {
+
                 if (i.Key.Tag != "Background" && i.Key.Tag != "Player") {
                     if (fallSpeed < 0 || !Ground)
                         Player.Move.Y = fallSpeed;
@@ -149,23 +163,26 @@ namespace Platformerengine.res.game_res.game_code {
                         fallSpeed = 0;
                     }
                     else if (Top) {
-                        fallSpeed = 0;
+                        //Player.Move.Y = 0;
+                        //fallSpeed = 0;
                     }
                         
                     if (Right && Speed < 0) {
                         Speed = 0;
+                        Player.Move.X = 0;
                     }
                     if (Left && Speed > 0) {
                         Speed = 0;
+                        Player.Move.X = 0;
                     }
 
                     i.Key.Move.X = Speed;
                 }
                 else if (i.Key.Tag == "Background") {
-                    i.Key.Move.X = Speed / 10;
+                    i.Key.Move.X = Speed;
                 }
                 
-                if (Player.Transform.Position.Y > 800) {
+                if (Player.Transform.Position.Y > 1000) {
                     Player.Transform.Position.X = 150;
                     Player.Transform.Position.Y = 0;
                     Player.ZeroidScore();

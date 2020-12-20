@@ -15,7 +15,8 @@ namespace Platformerengine.res.game_res.game_code {
             shape.Width = anySize.Width;
             Random rand = new Random(DateTime.Now.Second);
             
-            shape.Fill = resourses.Platforms[rand.Next(0, resourses.Platforms.Count)];
+            //shape.Fill = resourses.Sprites["check.jpg"];
+
             Shape = shape;
         }
     }

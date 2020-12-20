@@ -39,8 +39,10 @@ namespace Platformerengine.res.code.main {
         }
         public void Start() {
             IsGameRun = true;
-            FabricScene.AddScene("Meteorits".ToString(), new MeteoritScene(new logic.Size(WindowHeight, WindowWidth)));
-            FabricScene.SetCurrentScene("Meteorits");
+            //FabricScene.AddScene("Meteorits".ToString(), new MeteoritScene(new logic.Size(WindowHeight, WindowWidth)));
+            FabricScene.AddScene("MarioScene".ToString(), new MarioScene(new logic.Size(WindowHeight, WindowWidth)));
+            FabricScene.SetCurrentScene("MarioScene");
+            FabricScene.InitCurrentScene();
             viewbox.Child = FabricScene.CurrentScene.canvas;
             FabricScene.CurrentScene.Start();
 

@@ -10,6 +10,9 @@ namespace Platformerengine.res.code.logic
         public void Start() {
             CompositionTarget.Rendering += GameLoop;
         }
+        public void Stop() {
+            CompositionTarget.Rendering -= GameLoop;
+        }
 
         private void GameLoop(object sender, EventArgs e)
         {
