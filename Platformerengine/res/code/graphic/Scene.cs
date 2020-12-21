@@ -84,6 +84,10 @@ namespace Platformerengine.res.code.graphic {
             }
         }
 
+        public virtual void InitScene() {
+
+        }
+
         public void AddObjectOnScene(GameObject obj, IGameManager manager = null) {
             objects.Add(obj, manager);
             obj.AddCollider(new BoxCollider(obj, this));

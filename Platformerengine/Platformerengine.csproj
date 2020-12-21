@@ -78,7 +78,7 @@
     <Compile Include="res\game_res\game_code\ControllerScript.cs" />
     <Compile Include="res\game_res\game_code\HiddenBlock.cs" />
     <Compile Include="res\game_res\game_code\HiddenBlockScript.cs" />
-    <Compile Include="res\game_res\game_code\HiddenObject.cs" />
+    <Compile Include="res\game_res\game_code\MarioScene.cs" />
     <Compile Include="res\game_res\game_code\MeteoritScene.cs" />
     <Compile Include="res\game_res\game_code\MeteoritScript.cs" />
     <Compile Include="res\game_res\game_code\Platform.cs" />

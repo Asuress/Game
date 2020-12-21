@@ -13,8 +13,24 @@ namespace Platformerengine.res.code.Graphics {
         private Dictionary<string, Scene> Scenes;
         public Scene CurrentScene { get; set; }
         private static FabricScene Instance;
+        public Dictionary<string, Scene> Checkpoints { get; }
         private FabricScene() {
             Scenes = new Dictionary<string, Scene>();
+            Checkpoints = new Dictionary<string, Scene>();
+        }
+
+        public void AddCheckpoint(string name, Scene scene) {
+            Checkpoints.Add(name, scene);
+        }
+
+        public void InitCurrentScene() {
+            CurrentScene.InitScene();
+        }
+
+        public void LoadCheckpoint(string name) {
+            CurrentScene.Stop();
+            if (Checkpoints.ContainsKey(name))
+                CurrentScene = Checkpoints[name];
         }
 
         public static FabricScene GetInstance() {
