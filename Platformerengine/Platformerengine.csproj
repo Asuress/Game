@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="res\code\graphic\Animator.cs" />
     <Compile Include="res\code\physics\BoxCollider.cs" />
     <Compile Include="res\game_res\game_code\Background.cs" />
     <Compile Include="res\game_res\game_code\Coin.cs" />
